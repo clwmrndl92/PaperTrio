@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Stages")]
     [SerializeField] int stageNum = 1;
     StageState[] stageStates;
+    [SerializeField] private GameObject player;
 
     [SerializeField] public int CurrentStage = 0;
     [SerializeField] public int CurrentPage = 0;
@@ -26,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    public GameObject GetPlayer() => player;
 
     // Stage Management Methods
     public StageState GetStageState(int index)
