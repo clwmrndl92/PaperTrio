@@ -16,20 +16,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] int stageCount = 1;
     GameObject[] stageButtons;
     StageState[] stageStates;
+    [SerializeField] private GameObject player;
 
     private void Awake() {
         // Init Stage States
         stageStates = new StageState[stageCount];
         Array.Fill(stageStates, StageState.NotClear);
     }
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
+    public GameObject GetPlayer() => player;
 
     public void LoadCurrentStageAndPage()
     {
