@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] public int CurrentStage = 0;
     [SerializeField] public int CurrentPage = 0;
-    [SerializeField] MapData Map;
+    [SerializeField] public MapData Map;
     [SerializeField] PageManager _pageManager;
     private void Awake()
     {
@@ -75,6 +75,7 @@ public class GameManager : Singleton<GameManager>
             CurrentPage = CurrentPage % 3;
             NextStage();
         }
+        _pageManager.SavePages();
         _pageManager.LoadPage();
         //LoadCurrentStageAndPage();
     }

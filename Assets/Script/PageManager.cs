@@ -12,6 +12,12 @@ public class PageManager : MonoBehaviour
     [SerializeField] public List<GameObject> rightPages = new();
     private int rightIndex;
 
+    [SerializeField] SwitchManager switchManager;
+
+    [SerializeField] List<GameObject> savedLeftPages = new();
+    [SerializeField] List<GameObject> savedMiddlePages = new();
+    [SerializeField] List<GameObject> savedRightPages = new();
+
     [SerializeField] private List<GameObject> dynamicObjects = new();
 
     [SerializeField] private bool isBetween1;
@@ -185,6 +191,8 @@ public class PageManager : MonoBehaviour
     {
         foreach(GameObject go in dynamicObjects)
         {
+            if (go == null)
+                continue;
             if (go.transform.parent.gameObject.activeSelf)
             {
                 Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
@@ -258,6 +266,8 @@ public class PageManager : MonoBehaviour
 
         foreach (GameObject go in dynamicObjects)
         {
+            if (go == null)
+                continue;
             float widthHalf= go.GetComponent<Collider2D>().bounds.extents.x;
             float viewportWidthHalf= widthHalf / 16f;
             Debug.Log(viewportWidthHalf);
@@ -292,6 +302,70 @@ public class PageManager : MonoBehaviour
         }
     }
 
+    public void SavePages()
+    {
+        savedLeftPages.Clear();
+        savedMiddlePages.Clear();
+        savedRightPages.Clear();
+        GameObject obj;
+        for (int i = 0; i <= maxIndex; i++)
+        {
+            obj = GameObject.Instantiate(leftPages[i]);
+            savedLeftPages.Add(obj);
+            UpdateNewPages(obj);
+
+            obj = GameObject.Instantiate(middlePages[i]);
+            savedMiddlePages.Add(obj);
+            UpdateNewPages(obj);
+
+            obj = GameObject.Instantiate(rightPages[i]);
+            savedRightPages.Add(obj);
+            UpdateNewPages(obj);
+        }
+    }
+
+    private void UpdateNewPages(GameObject obj)
+    {
+        switchManager.UpdateSwitchList(obj);
+        switchManager.UpdateWallList(obj);
+        UpdateBoxList(obj);
+        obj.SetActive(false);
+    }
+
+    public void RestartPage()
+    {
+        for (int i = 0; i < maxIndex; i++)
+        {
+            leftPages[i] = savedLeftPages[i];
+            middlePages[i] = savedMiddlePages[i];
+            rightPages[i] = savedRightPages[i];
+        }
+        int currentStage = GameManager.Instance.CurrentStage;
+        int currentPage = GameManager.Instance.CurrentPage;
+        var sections = GameManager.Instance.Map.Stages[currentStage].Pages[currentPage].Sections;
+        Destroy(leftPages[maxIndex]);
+        Destroy(middlePages[maxIndex]);
+        Destroy(rightPages[maxIndex]);
+        leftPages[maxIndex] = GameObject.Instantiate(sections[0]);
+        UpdateNewPages(leftPages[maxIndex]);
+        middlePages[maxIndex] = GameObject.Instantiate(sections[1]);
+        UpdateNewPages(middlePages[maxIndex]);
+        rightPages[maxIndex] = GameObject.Instantiate(sections[2]);
+        UpdateNewPages(rightPages[maxIndex]);
+        LoadPage();
+    }
+
+
+    public void UpdateBoxList(GameObject obj)
+    {
+        foreach(Transform child in obj.transform)
+        {
+            if (child.CompareTag("Box"))
+            {
+                dynamicObjects.Add(child.gameObject);
+            }
+        }
+    }
 
     private void Update()
     {
