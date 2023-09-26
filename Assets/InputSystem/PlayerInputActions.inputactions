@@ -40,6 +40,24 @@
                     "processors": "Scale(factor=4)",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ClickLeft",
+                    "type": "Button",
+                    "id": "b3b4f2b2-373a-4e76-86f0-a9b27cfd2f4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClickRight",
+                    "type": "Button",
+                    "id": "cea4cbaa-2efe-45ba-b5ee-34f74db94c27",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -337,6 +355,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2141419-6f63-4a2f-ac44-29a80f6d95ce",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ClickLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68f64ee5-4c02-44ab-8661-5f51fee55f78",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ClickRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
