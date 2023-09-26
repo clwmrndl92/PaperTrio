@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    [SerializeField] List<Wall> walls = new();
-    [SerializeField] private bool isSwitch;
+    public bool isSwitch { get; set; }
 
-    private void moveWall()
+
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!isSwitch)
+        if(collision.CompareTag("Player")|| collision.CompareTag("Box"))
         {
-            foreach (Wall wall in walls)
-            {
-                if (wall.transform.parent.gameObject.activeSelf)
-                {
-                    wall.ReverseMove();
-                }
-            }
-            return;
+            isSwitch = true;
         }
-            
-
-        foreach(Wall wall in walls)
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Box"))
         {
-            if (wall.transform.parent.gameObject.activeSelf)
+            isSwitch = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("disable");
+        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, 1.0f); 
+
+        foreach (Collider2D collision in collisions)
+        {
+            if (collision.CompareTag("Box")) // 다른 Collider2D가 "Player" 태그를 가진 경우
             {
-                wall.Move();
+                isSwitch = true;
+                break;
             }
         }
     }
 
-    private void Update()
-    {
-        moveWall();
-    }
 }
