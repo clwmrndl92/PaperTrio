@@ -6,7 +6,7 @@ public class Switch : MonoBehaviour
     Color _color;
     SpriteRenderer _spriteRenderer;
 
-    private void Start()
+    private void Awake()
     {
         _spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
         _color = _spriteRenderer.color;

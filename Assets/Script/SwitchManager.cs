@@ -16,6 +16,9 @@ public class SwitchManager : MonoBehaviour
     {
         foreach(Switch s in switches)
         {
+            if (s == null)
+                continue;
+
             if (!s.transform.parent.transform.parent.gameObject.activeSelf)
                 continue;
 
@@ -23,6 +26,8 @@ public class SwitchManager : MonoBehaviour
             {
                 foreach (Wall wall in walls)
                 {
+                    if (wall == null)
+                        continue;
                     if (wall.transform.parent.gameObject.activeSelf)
                     {
                         wall.ReverseMove();
@@ -33,6 +38,8 @@ public class SwitchManager : MonoBehaviour
 
             foreach (Wall wall in walls)
             {
+                if (wall == null)
+                    continue;
                 if (wall.transform.parent.gameObject.activeSelf)
                 {
                     wall.Move();
@@ -51,5 +58,55 @@ public class SwitchManager : MonoBehaviour
     private void Update()
     {
         MoveWalls();
+    }
+
+    public void UpdateSwitchList(GameObject obj)
+    {
+        var switches = obj.GetComponentsInChildren<Switch>();
+        foreach(var s in switches)
+        {
+            if (s.gameObject.name == "Switch1")
+            {
+                switch1List.Add(s);
+            }
+            else if (s.gameObject.name == "Switch2")
+            {
+                switch2List.Add(s);
+            }
+            else if (s.gameObject.name == "Switch3")
+            {
+                switch3List.Add(s);
+            }
+        }
+    }
+
+    public void UpdateWallList(GameObject obj)
+    {
+        var walls = obj.GetComponentsInChildren<Wall>();
+        foreach (var w in walls)
+        {
+            if (w.gameObject.name == "Wall1")
+            {
+                wall1List.Add(w);
+            }
+            else if (w.gameObject.name == "Wall2")
+            {
+                wall2List.Add(w);
+            }
+            else if (w.gameObject.name == "Wall3")
+            {
+                wall3List.Add(w);
+            }
+        }
+    }
+
+    public void ResetAllList()
+    {
+        switch1List.Clear();
+        switch2List.Clear();
+        switch3List.Clear();
+        wall1List.Clear();
+        wall1List.Clear();
+        wall1List.Clear();
     }
 }
