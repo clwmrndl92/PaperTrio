@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
     public bool isSwitch { get; set; }
+    Color _color;
+    SpriteRenderer _spriteRenderer;
 
-
+    private void Start()
+    {
+        _spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        _color = _spriteRenderer.color;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") || collision.CompareTag("Box") && isSwitch == false)
+        {
+            isSwitch = true;
+            _spriteRenderer.color = Color.red;
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")|| collision.CompareTag("Box")|| collision.CompareTag("Laser"))
         {
             isSwitch = true;
+            _spriteRenderer.color = Color.red;
         }
     }
     
@@ -21,6 +34,7 @@ public class Switch : MonoBehaviour
         if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Laser"))
         {
             isSwitch = false;
+            _spriteRenderer.color = _color;
         }
     }
 
