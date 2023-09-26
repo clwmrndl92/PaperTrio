@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] PageManager _pageManager;
     void Start()
     {
-        
+        LoadCurrentStageAndPage();
     }
 
     void Update()
@@ -20,9 +20,10 @@ public class GameManager : Singleton<GameManager>
     public void LoadCurrentStageAndPage()
     {
         int stageIndex = 0;
-        int pageIndex = 1;
+        int pageIndex = 2;
 
         _pageManager.ResetPages();
+        _pageManager.UpdatePagesIndex(pageIndex);
         for (int i = 0; i <= pageIndex; i++)
         {
             var PageSections = Map.Stages[stageIndex].Pages[i].Sections;

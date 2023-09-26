@@ -115,6 +115,13 @@ public class PageManager : MonoBehaviour
         }
     }
 
+    public void UpdatePagesIndex(int index)
+    {
+        leftIndex = index;
+        middleIndex = index;
+        rightIndex = index;
+    }
+
     public void ResetPages()
     {
         leftPages.Clear();
