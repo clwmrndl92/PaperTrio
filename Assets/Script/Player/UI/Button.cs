@@ -8,6 +8,7 @@ public class Button : MonoBehaviour
         GameManager.Instance.SceneChange("TitleScene");
     }
     public void GoToStage(int stageNum){
+        GameManager.Instance.CurrentPage = 0;
         GameManager.Instance.SceneChange("Stage" + stageNum.ToString());
     }
 }
