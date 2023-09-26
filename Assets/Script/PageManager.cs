@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class PageManager : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class PageManager : MonoBehaviour
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             CheckBetweenSection();
 
@@ -283,12 +284,12 @@ public class PageManager : MonoBehaviour
     {
         foreach(GameObject go in objects)
         {
-            Color originColor = go.GetComponent<SpriteRenderer>().color;
+            /*Color originColor = go.GetComponent<SpriteRenderer>().color;
             go.GetComponent<SpriteRenderer>().DOColor(Color.red, 1f)
                 .OnComplete(() =>
                 {
                     go.GetComponent<SpriteRenderer>().DOColor(originColor, 1f);
-                });
+                });*/
         }
     }
 
