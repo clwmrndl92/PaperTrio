@@ -16,7 +16,7 @@ public class SwitchManager : MonoBehaviour
     {
         foreach(Switch s in switches)
         {
-            if (!s.transform.parent.gameObject.activeSelf)
+            if (!s.transform.parent.transform.parent.gameObject.activeSelf)
                 continue;
 
             if (!s.isSwitch)

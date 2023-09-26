@@ -16,6 +16,7 @@ public class Wall : MonoBehaviour
     }
     public void Move()
     {
+        Debug.Log(-speed * Time.deltaTime);
         transform.Translate(0, -speed*Time.deltaTime, 0);
         if (transform.position.y <endPositionY)
         {
