@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -29,19 +30,23 @@ public class Laser : MonoBehaviour
         Vector3 rayEnd = transform.position;
         rayEnd.x += rayDistance;
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, rayDistance);
-        if (hit)
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, rayDirection, rayDistance);
+        if (hit.Length != 0)
         {
+            foreach (var item in hit)
+            {
+                if(item.collider.gameObject.layer == LayerMask.NameToLayer("Ground")){
+                    float colliderSizeX = item.point.x - transform.position.x;
+                    rayEnd = item.point;
 
-            float colliderSizeX = hit.point.x - transform.position.x;
-            rayEnd = hit.point;
-
-            lr.SetPosition(1, rayEnd);
-            Vector2[] colliderPoints;
-            colliderPoints = col.points;
-            colliderPoints[1].x = colliderSizeX;
-            col.points = colliderPoints;
-            return;
+                    lr.SetPosition(1, rayEnd);
+                    Vector2[] colliderPoints;
+                    colliderPoints = col.points;
+                    colliderPoints[1].x = colliderSizeX;
+                    col.points = colliderPoints;
+                    return;
+                }
+            }
            
         }
         
