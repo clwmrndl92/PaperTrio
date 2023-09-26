@@ -3810,6 +3810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 624707376}
     m_Modifications:
+    - target: {fileID: 159198397572600399, guid: 8625ec2072fc0e941a7ee2574880f011, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4682776224661452392, guid: 8625ec2072fc0e941a7ee2574880f011, type: 3}
       propertyPath: m_Name
       value: Stage1_Page2_Section1
@@ -4066,6 +4070,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: bc3fd2ebae1ec7044a4584c0e4d182e4, type: 2}
+    - target: {fileID: 177149674483451116, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4664702834981563060, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
       propertyPath: m_Name
       value: Stage1_Page1_Section1
