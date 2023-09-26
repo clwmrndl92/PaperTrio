@@ -28,6 +28,8 @@ public class PageManager : MonoBehaviour
 
     [SerializeField] private int maxIndex;
 
+    [SerializeField] GameObject Stage1_Page2_Section1;
+
     private void Start()
     {
         GameManager.Instance.initScene();
@@ -357,11 +359,14 @@ public class PageManager : MonoBehaviour
         for (int i = 0; i < maxIndex; i++)
         {
             leftPages[i].SetActive(false);
-            leftPages[i] = savedLeftPages[i];
+            Destroy(leftPages[i]);
+            leftPages[i] = GameObject.Instantiate(savedLeftPages[i]);
             middlePages[i].SetActive(false);
-            middlePages[i] = savedMiddlePages[i];
+            Destroy(middlePages[i]);
+            middlePages[i] = GameObject.Instantiate(savedMiddlePages[i]);
             rightPages[i].SetActive(false);
-            rightPages[i] = savedRightPages[i];
+            Destroy(rightPages[i]);
+            rightPages[i] = GameObject.Instantiate(savedRightPages[i]);
         }
         int currentStage = GameManager.Instance.CurrentStage;
         int currentPage = GameManager.Instance.CurrentPage;

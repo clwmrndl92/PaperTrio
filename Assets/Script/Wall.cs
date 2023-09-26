@@ -8,9 +8,11 @@ public class Wall : MonoBehaviour
     private float startPositionY;
     [SerializeField] private float moveDistance;
     private float endPositionY;
+    [SerializeField] private float positionY = -2.1f;
 
     private void Awake()
     {
+        transform.position = new Vector3(transform.position.x, positionY, transform.position.z);
         startPositionY = transform.position.y;
         endPositionY = startPositionY - moveDistance;
     }
