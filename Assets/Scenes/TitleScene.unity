@@ -971,6 +971,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3116963100209242128, guid: a74a420a67646584d865c313fbdd5fa9, type: 3}
+      propertyPath: Map
+      value: 
+      objectReference: {fileID: 11400000, guid: 1361d6e30a58a3141968160a478069a6, type: 2}
+    - target: {fileID: 3116963100209242128, guid: a74a420a67646584d865c313fbdd5fa9, type: 3}
       propertyPath: stageNum
       value: 2
       objectReference: {fileID: 0}
