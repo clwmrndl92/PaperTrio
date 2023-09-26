@@ -10,7 +10,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player")|| collision.CompareTag("Box"))
+        if(collision.CompareTag("Player")|| collision.CompareTag("Box")|| collision.CompareTag("Laser"))
         {
             isSwitch = true;
         }
@@ -18,7 +18,7 @@ public class Switch : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Laser"))
         {
             isSwitch = false;
         }
