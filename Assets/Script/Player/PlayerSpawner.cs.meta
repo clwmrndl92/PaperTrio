@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Player/PlayerSpawner.cs.meta
+guid: 6f5d001c0669d3347bd4431eb952196f
+========
+guid: 902a2542c5f492b4fa09037e48f1c842
+>>>>>>>> main:Assets/Master/Scripts/EndingCameraController.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

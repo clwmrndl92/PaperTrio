@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Master/Scripts/CameraController.cs.meta
+guid: 0b1a3d0e670934b47a6f46b339f31d40
+========
+guid: 84c05d774ed6ed848aafc1978852fb57
+>>>>>>>> main:Assets/Master/InputSystem/InputData.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
