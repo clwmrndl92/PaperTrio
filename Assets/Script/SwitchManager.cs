@@ -99,4 +99,14 @@ public class SwitchManager : MonoBehaviour
             }
         }
     }
+
+    public void ResetAllList()
+    {
+        switch1List.Clear();
+        switch2List.Clear();
+        switch3List.Clear();
+        wall1List.Clear();
+        wall1List.Clear();
+        wall1List.Clear();
+    }
 }
