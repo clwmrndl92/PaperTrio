@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 4070324402370035918, guid: 4b66860582d2f964d91d7c83d356fd7e, type: 3}
   - {fileID: 1117566554978652808, guid: 9c525c7213d53f44ca36a6f6e9226981, type: 3}
   - {fileID: 4485686085217964595, guid: eb17d60131615174ebd0e86816adfdfb, type: 3}
-  RespawnPosition: {x: -11, y: -1, z: 0}
+  RespawnPosition: {x: 0, y: 4, z: 0}
