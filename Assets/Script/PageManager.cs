@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PageManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class PageManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> dynamicObjects = new();
 
+    [SerializeField] private bool isBetween1;
+    [SerializeField] private bool isBetween2;
+    private List<GameObject> between1Objects = new();
+    private List<GameObject> between2Objects = new();
+
     private void ChangePage()
     {
         Vector3 mouseScreenPos = Input.mousePosition;
@@ -20,20 +26,38 @@ public class PageManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            
+            CheckBetweenSection();
+
             if (mouseViewportPos.x < 0.33f)
             {
+                if (isBetween1)
+                {
+                    BetweenCautionEffect(between1Objects);
+                    return;
+                }
                 NextPage(leftPages, ref leftIndex);
                 return;
             }
             if (mouseViewportPos.x < 0.66f&& mouseScreenPos.x > 0.33f)
             {
+                if (isBetween1 || isBetween2)
+                {
+                    BetweenCautionEffect(between1Objects);
+                    BetweenCautionEffect(between2Objects);
+                    return;
+                }
+
                 NextPage(middlePages, ref middleIndex);
                 return;
             }
 
             if (mouseViewportPos.x > 0.66f)
             {
+                if (isBetween2)
+                {
+                    BetweenCautionEffect(between2Objects);
+                    return;
+                }
                 NextPage(rightPages, ref rightIndex);
                 return;
             }
@@ -42,19 +66,39 @@ public class PageManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            CheckBetweenSection();
             if (mouseViewportPos.x < 0.33f)
             {
+                if (isBetween1)
+                {
+                    BetweenCautionEffect(between1Objects);
+                    return;
+                }
+
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
             if (mouseViewportPos.x < 0.66f && mouseScreenPos.x > 0.33f)
             {
+                if (isBetween1 || isBetween2)
+                {
+                    BetweenCautionEffect(between1Objects);
+                    BetweenCautionEffect(between2Objects);
+                    return;
+                }
+
                 PrevPage(middlePages, ref middleIndex);
                 return;
             }
 
             if (mouseViewportPos.x > 0.66f)
             {
+
+                if (isBetween2)
+                {
+                    BetweenCautionEffect(between2Objects);
+                    return;
+                }
                 PrevPage(rightPages, ref rightIndex);
                 return;
             }
@@ -138,6 +182,54 @@ public class PageManager : MonoBehaviour
             Destroy(page);
         }
     }
+        
+    private void CheckPlayerSection()
+    {
+
+    }
+    private void CheckBetweenSection()
+    {
+        isBetween1 = false;
+        isBetween2 = false;
+        between1Objects.Clear();
+        between2Objects.Clear();
+
+        foreach (GameObject go in dynamicObjects)
+        {
+            float widthHalf= go.GetComponent<Collider2D>().bounds.extents.x;
+            float viewportWidthHalf= widthHalf / 16f;
+            Debug.Log(viewportWidthHalf);
+
+            float objectViewportPosX = Camera.main.WorldToViewportPoint(go.transform.position).x;
+            if(0.33f-viewportWidthHalf<objectViewportPosX
+                &&0.33f + viewportWidthHalf >objectViewportPosX)
+            {
+                between1Objects.Add(go);
+                isBetween1 = true;
+            }
+
+            if (0.66f - viewportWidthHalf < objectViewportPosX
+                && 0.66f + viewportWidthHalf > objectViewportPosX)
+            {
+                between2Objects.Add(go);
+                isBetween2 = true;
+            }
+        }
+    }
+
+    private void BetweenCautionEffect(List<GameObject> objects)
+    {
+        foreach(GameObject go in objects)
+        {
+            go.GetComponent<SpriteRenderer>().DOColor(Color.red, 1f)
+                .OnComplete(() =>
+                {
+                    go.GetComponent<SpriteRenderer>().DOColor(Color.white, 1f);
+                });
+        }
+    }
+
+
     private void Update()
     {
         ChangePage();
