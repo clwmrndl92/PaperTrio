@@ -171,7 +171,7 @@ public class PageManager : MonoBehaviour
     private void NextPage(List<GameObject> list, ref int index)
     {
         UpdateDynamicObjectParent();
-        if (index == list.Count-1)
+        if (index == maxIndex)
         {
             return;
         }
