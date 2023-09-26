@@ -28,8 +28,6 @@ public class PageManager : MonoBehaviour
 
     [SerializeField] private int maxIndex;
 
-    [SerializeField] GameObject Stage1_Page2_Section1;
-
     private void Start()
     {
         GameManager.Instance.initScene();
