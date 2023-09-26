@@ -17,16 +17,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public int CurrentPage = 0;
     [SerializeField] MapData Map;
     [SerializeField] PageManager _pageManager;
-    [SerializeField] Transform _playerTransform;
     private void Start()
     {
         LoadCurrentStageAndPage();
         // Init Stage States
         stageStates = new StageState[stageNum];
         Array.Fill(stageStates, StageState.NotClear);
+        player = GameObject.FindWithTag("Player");
+        _pageManager = GameObject.Find("PageManager").GetComponent<PageManager>();
     }
-
-
     public GameObject GetPlayer() => player;
 
     // Stage Management Methods
@@ -67,7 +66,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadPlayerSpawnPosition()
     {
-        _playerTransform.position = Map.Stages[CurrentStage].Pages[CurrentPage].RespawnPosition;
+        player.transform.position = Map.Stages[CurrentStage].Pages[CurrentPage].RespawnPosition;
     }
 
     public void NextPage()
@@ -94,6 +93,12 @@ public class GameManager : Singleton<GameManager>
     public void SceneChange(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void initScene()
+    {
+        player = GameObject.FindWithTag("Player");
+        _pageManager = GameObject.Find("PageManager").GetComponent<PageManager>();
     }
 }
 public enum StageState

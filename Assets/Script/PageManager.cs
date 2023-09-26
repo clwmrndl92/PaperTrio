@@ -19,6 +19,10 @@ public class PageManager : MonoBehaviour
     private List<GameObject> between1Objects = new();
     private List<GameObject> between2Objects = new();
 
+    private void Start()
+    {
+        GameManager.Instance.initScene();
+    }
     private void ChangePage()
     {
         Vector3 mouseScreenPos = Input.mousePosition;
@@ -221,10 +225,11 @@ public class PageManager : MonoBehaviour
     {
         foreach(GameObject go in objects)
         {
+            Color originColor = go.GetComponent<SpriteRenderer>().color;
             go.GetComponent<SpriteRenderer>().DOColor(Color.red, 1f)
                 .OnComplete(() =>
                 {
-                    go.GetComponent<SpriteRenderer>().DOColor(Color.white, 1f);
+                    go.GetComponent<SpriteRenderer>().DOColor(originColor, 1f);
                 });
         }
     }
