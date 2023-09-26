@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stage2
   m_EditorClassIdentifier: 
   Pages:
-  - {fileID: 11400000, guid: 0cb87b2ada6a5c745b42f099d9306354, type: 2}
-  - {fileID: 11400000, guid: 63f11abafb179e040854d5df6320354d, type: 2}
+  - {fileID: 11400000, guid: 5798939f1732c6e428a9279b0038a9d0, type: 2}
+  - {fileID: 11400000, guid: 993b20a8fd12b7745817b3d56a16735d, type: 2}
