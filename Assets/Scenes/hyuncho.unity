@@ -339,9 +339,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 230077606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ffed76f63e5d149a9a9240131a908e, type: 3}
+  m_Script: {fileID: 11500000, guid: 786497cb1c096a144849560e64a22b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNum: 1
+  CurrentStage: 0
+  CurrentPage: 0
+  Map: {fileID: 11400000, guid: 1361d6e30a58a3141968160a478069a6, type: 2}
+  _pageManager: {fileID: 0}
+  _playerTransform: {fileID: 0}
 --- !u!1 &234905387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1207,9 @@ MonoBehaviour:
   - {fileID: 1825859254}
   dynamicObjects:
   - {fileID: 1631723617}
+  - {fileID: 1949878686}
+  isBetween1: 0
+  isBetween2: 0
 --- !u!4 &1648988100
 Transform:
   m_ObjectHideFlags: 0
@@ -1468,6 +1477,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1949878686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3672294165616844214, guid: 8625ec2072fc0e941a7ee2574880f011, type: 3}
+  m_PrefabInstance: {fileID: 8088352939590637731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &496029112647222642
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,42 +1,45 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
+
 
 public class GameManager : Singleton<GameManager>
 {
-    public string CurrentStageAndPage;
-    [SerializeField] MapData Map;
-    [SerializeField] PageManager _pageManager;
-
     // Stage Management
     [Header("Stages")]
-    [SerializeField] int stageCount = 1;
-    GameObject[] stageButtons;
+    [SerializeField] int stageNum = 1;
     StageState[] stageStates;
 
-    private void Awake() {
+    [SerializeField] public int CurrentStage = 0;
+    [SerializeField] public int CurrentPage = 0;
+    [SerializeField] MapData Map;
+    [SerializeField] PageManager _pageManager;
+    [SerializeField] Transform _playerTransform;
+    private void Start()
+    {
+        LoadCurrentStageAndPage();
         // Init Stage States
-        stageStates = new StageState[stageCount];
+        stageStates = new StageState[stageNum];
         Array.Fill(stageStates, StageState.NotClear);
     }
-    void Start()
-    {
-    }
 
-    void Update()
-    {
-        
-    }
 
+
+    // Stage Management Methods
+    public StageState GetStageState(int index)
+    {
+        return stageStates[index];
+    }
     public void LoadCurrentStageAndPage()
     {
-        int stageIndex = 0;
-        int pageIndex = 1;
+        int stageIndex = CurrentStage;
+        int pageIndex = CurrentPage;
 
+        LoadPlayerSpawnPosition();
         _pageManager.ResetPages();
+        _pageManager.UpdatePagesIndex(pageIndex);
         for (int i = 0; i <= pageIndex; i++)
         {
             var PageSections = Map.Stages[stageIndex].Pages[i].Sections;
@@ -60,16 +63,41 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void ClearStage(int stageNum){
-        stageStates[stageNum] = StageState.Clear;
-    }
-    // Stage Management Methods
-    public StageState GetStageState(int index){
-        return stageStates[index];
+    public void LoadPlayerSpawnPosition()
+    {
+        _playerTransform.position = Map.Stages[CurrentStage].Pages[CurrentPage].RespawnPosition;
     }
 
+    public void NextPage()
+    {
+        CurrentPage++;
+        if (CurrentPage >= 3)
+        {
+            CurrentPage = CurrentPage % 3;
+            NextStage();
+        }
+        LoadCurrentStageAndPage();
+    }
+
+    public void NextStage()
+    {
+        CurrentStage++;
+    }
+
+    public void ClearStage(int stageNum)
+    {
+        stageStates[stageNum] = StageState.Clear;
+    }
     // Scene Change Method
-    public void SceneChange(string sceneName){
+    public void SceneChange(string sceneName)
+    {
         SceneManager.LoadScene(sceneName);
     }
+}
+public enum StageState
+{
+    NotClear,
+    Clear,
+    StarClear,
+    None
 }
