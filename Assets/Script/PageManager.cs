@@ -32,7 +32,7 @@ public class PageManager : MonoBehaviour
         {
             CheckBetweenSection();
 
-            if (mouseViewportPos.x < 0.33f)
+            if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
             {
                 if (isBetween1)
                 {
@@ -42,7 +42,9 @@ public class PageManager : MonoBehaviour
                 NextPage(leftPages, ref leftIndex);
                 return;
             }
-            if (mouseViewportPos.x < 0.66f&& mouseScreenPos.x > 0.33f)
+
+
+            if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
             {
                 if (isBetween1 || isBetween2)
                 {
@@ -54,8 +56,9 @@ public class PageManager : MonoBehaviour
                 NextPage(middlePages, ref middleIndex);
                 return;
             }
+          
 
-            if (mouseViewportPos.x > 0.66f)
+            if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
             {
                 if (isBetween2)
                 {
@@ -65,13 +68,13 @@ public class PageManager : MonoBehaviour
                 NextPage(rightPages, ref rightIndex);
                 return;
             }
-
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             CheckBetweenSection();
-            if (mouseViewportPos.x < 0.33f)
+
+            if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
             {
                 if (isBetween1)
                 {
@@ -82,7 +85,8 @@ public class PageManager : MonoBehaviour
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
-            if (mouseViewportPos.x < 0.66f && mouseScreenPos.x > 0.33f)
+
+            if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
             {
                 if (isBetween1 || isBetween2)
                 {
@@ -94,8 +98,10 @@ public class PageManager : MonoBehaviour
                 PrevPage(middlePages, ref middleIndex);
                 return;
             }
+            
+            
 
-            if (mouseViewportPos.x > 0.66f)
+            if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
             {
 
                 if (isBetween2)
@@ -187,9 +193,23 @@ public class PageManager : MonoBehaviour
         }
     }
         
-    private void CheckPlayerSection()
+    private int CheckPlayerSection()
     {
-
+        Vector3 playerPos = GameManager.Instance.GetPlayer().transform.position;
+        float playerViewportPosX = Camera.main.WorldToViewportPoint(playerPos).x;
+        if (playerViewportPosX <= 0.33f)
+        {
+            return 1;
+        }
+        if (playerViewportPosX > 0.33f&& playerViewportPosX<=0.66f)
+        {
+            return 2;
+        }
+        if (playerViewportPosX > 0.66f)
+        {
+            return 3;
+        }
+        return 0;
     }
     private void CheckBetweenSection()
     {
