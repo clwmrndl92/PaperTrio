@@ -60,4 +60,11 @@ public class Player : MonoBehaviour
             GameManager.Instance._pageManager.RestartPage();
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Dead") || other.gameObject.CompareTag("Laser") )
+        {
+            GameManager.Instance._pageManager.RestartPage();
+        }
+    }
 }
