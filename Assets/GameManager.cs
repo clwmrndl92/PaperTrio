@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public string CurrentStageAndPage;
     [SerializeField] MapData Map;
-    [SerializeField] PageManager _pageManager;
+    [SerializeField] PageManager PageManager;
     void Start()
     {
         
@@ -17,31 +17,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void LoadCurrentStageAndPage()
+    private void LoadCurrentStageAndPage()
     {
         int stageIndex = 0;
-        int pageIndex = 1;
+        int pageIndex = 0;
 
-        _pageManager.ResetPages();
         for (int i = 0; i <= pageIndex; i++)
         {
-            var PageSections = Map.Stages[stageIndex].Pages[i].Sections;
-            for (int j = 0; j < PageSections.Count; j++)
+            foreach (var section in Map.Stages[stageIndex].Pages[pageIndex].Sections)
             {
-                if (j == 0)
-                    _pageManager.leftPages.Add(PageSections[j]);
-                else if (j == 1)
-                    _pageManager.middlePages.Add(PageSections[j]);
-                else if (j == 2)
-                    _pageManager.rightPages.Add(PageSections[j]);
-                if (i != pageIndex)
-                {
-                    PageSections[j].SetActive(false);
-                }
-                else
-                {
-                    PageSections[j].SetActive(true);
-                }
+                Vector3 position = Vector3.zero; //TODO: position 설정하기
+                GameObject.Instantiate(section, position, new(0,0,0,0));
             }
         }
     }

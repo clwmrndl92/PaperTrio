@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PageManager : MonoBehaviour
 {
-    [SerializeField] public List<GameObject> leftPages = new();
+    [SerializeField] private List<GameObject> leftPages = new();
     private int leftIndex;
-    [SerializeField] public List<GameObject> middlePages = new();
+    [SerializeField] private List<GameObject> middlePages = new();
     private int middleIndex;
-    [SerializeField] public List<GameObject> rightPages = new();
+    [SerializeField] private List<GameObject> rightPages = new();
     private int rightIndex;
 
     [SerializeField] private List<GameObject> dynamicObjects = new();
@@ -112,23 +112,6 @@ public class PageManager : MonoBehaviour
                     continue;
                 }
             }
-        }
-    }
-
-    public void ResetPages()
-    {
-        leftPages.Clear();
-        //RemovePagesSections(leftPages);
-        middlePages.Clear();
-        //RemovePagesSections(middlePages);
-        rightPages.Clear();
-        //RemovePagesSections(rightPages);
-    }
-    private void RemovePagesSections(List<GameObject> pages)
-    {
-        foreach (var page in pages)
-        {
-            Destroy(page);
         }
     }
     private void Update()
