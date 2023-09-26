@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class PageManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PageManager : MonoBehaviour
         Vector3 mouseScreenPos = Input.mousePosition;
         Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             CheckBetweenSection();
 
