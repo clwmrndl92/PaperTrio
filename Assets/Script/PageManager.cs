@@ -112,7 +112,6 @@ public class PageManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             CheckBetweenSection();
-
             if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
             {
                 if (isBetween1)
@@ -297,5 +296,6 @@ public class PageManager : MonoBehaviour
     private void Update()
     {
         ChangePage();
+        UpdateDynamicObjectParent();
     }
 }
