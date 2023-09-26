@@ -13,7 +13,7 @@ public class Switch : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box") && isSwitch == false)
+        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Laser") && isSwitch == false)
         {
             isSwitch = true;
             _spriteRenderer.color = Color.red;
@@ -45,7 +45,7 @@ public class Switch : MonoBehaviour
 
         foreach (Collider2D collision in collisions)
         {
-            if (collision.CompareTag("Box")) // ´Ù¸¥ Collider2D°¡ "Player" ÅÂ±×¸¦ °¡Áø °æ¿ì
+            if (collision.CompareTag("Box")) // ï¿½Ù¸ï¿½ Collider2Dï¿½ï¿½ "Player" ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             {
                 isSwitch = true;
                 break;

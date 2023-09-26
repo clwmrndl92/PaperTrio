@@ -28,6 +28,8 @@ public class PageManager : MonoBehaviour
 
     [SerializeField] private int maxIndex;
 
+    [SerializeField] GameObject ClearText;
+
     private void Start()
     {
         GameManager.Instance.initScene();
@@ -123,7 +125,6 @@ public class PageManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             CheckBetweenSection();
-
             if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
             {
                 if (isBetween1)
@@ -400,8 +401,13 @@ public class PageManager : MonoBehaviour
         }
     }
 
+    public void ClearStage(){
+        ClearText.SetActive(true);
+    }
+
     private void Update()
     {
         ChangePage();
+        UpdateDynamicObjectParent();
     }
 }

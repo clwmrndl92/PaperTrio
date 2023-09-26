@@ -24,7 +24,7 @@ public class JumpState : BaseState
         Controller.rigidData.jumpHeight = Controller.rigidData.jumpHeightPerBlock * Controller.rigidData.runSpeedPerBlock;
         Controller.rigidData.jumpUpAcc = -2 * Controller.rigidData.jumpHeight / (Controller.rigidData.jumpUpTime * Controller.rigidData.jumpUpTime) - Controller.rigidData.gravity.y;
         Controller.rigidData.jumpStartVel = 2 * Controller.rigidData.jumpHeight / Controller.rigidData.jumpUpTime;
-        Controller.rigidData.jumpVelocity = Controller.rigidData.jumpStartVel * Vector2.up;
+        Controller.rigidData.jumpVelocity = Controller.rigidData.jumpStartVel * Vector2.up + Controller.input.directionX * Controller.rigidData.jumpMove * Vector2.right;
 
         if (Controller.rigidData.jumpVelocity.y <= 0)
         {  

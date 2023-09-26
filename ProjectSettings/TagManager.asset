@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Laser
+  - Dead
   layers:
   - Default
   - TransparentFX

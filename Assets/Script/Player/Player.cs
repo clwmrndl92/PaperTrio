@@ -53,4 +53,11 @@ public class Player : MonoBehaviour
         //stateMachine.AddState(StateName.Trampoline, new TrampolineState(playerController));
         //stateMachine.AddState(StateName.Spring, new SpringState(playerController));
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Dead") || other.gameObject.CompareTag("Laser") )
+        {
+            GameManager.Instance._pageManager.RestartPage();
+        }
+    }
 }

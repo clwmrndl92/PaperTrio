@@ -64,6 +64,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadPlayerSpawnPosition()
     {
+        Debug.Log(CurrentStage+ " " + CurrentPage);
         player.transform.position = Map.Stages[CurrentStage].Pages[CurrentPage].RespawnPosition;
     }
 
@@ -73,7 +74,8 @@ public class GameManager : Singleton<GameManager>
         if (CurrentPage >= 3)
         {
             CurrentPage = CurrentPage % 3;
-            NextStage();
+            ClearStage(CurrentStage);
+            return;
         }
         _pageManager.SavePages();
         _pageManager.LoadPage();
@@ -87,8 +89,9 @@ public class GameManager : Singleton<GameManager>
 
     public void ClearStage(int stageNum)
     {
+        _pageManager.ClearStage();
         stageStates[stageNum] = StageState.Clear;
-        Invoke(nameof(SceneChangeTitle), 3f);
+        Invoke(nameof(SceneChangeTitle), 2f);
     }
     // Scene Change Method
     public void SceneChange(string sceneName)

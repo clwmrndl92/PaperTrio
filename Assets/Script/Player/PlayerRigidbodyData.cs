@@ -21,8 +21,9 @@ public struct PlayerRigidbodyData
 
     [Header("Jump")]
     public float jumpHeightPerBlock;
-    [Range(0.1f, 2f)]
+    [Range(0.1f, 5f)]
     public float jumpUpTime;
+    public float jumpMove;
     // [Tooltip("Time allow jump after off ground")]
     // public float jumpCoyoteTime;
     // [Tooltip("Time allow jump before on ground")]
