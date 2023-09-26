@@ -18,7 +18,8 @@ public class SwitchManager : MonoBehaviour
         {
             if (s == null)
                 continue;
-            if (!s.transform.parent.gameObject.activeSelf)
+
+            if (!s.transform.parent.transform.parent.gameObject.activeSelf)
                 continue;
 
             if (!s.isSwitch)
