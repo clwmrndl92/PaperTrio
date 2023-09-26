@@ -164,8 +164,8 @@ Camera:
   m_GameObject: {fileID: 47227710}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1_Page1_Section1
       objectReference: {fileID: 0}
+    - target: {fileID: 496029113897337471, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
 --- !u!4 &156090118 stripped
@@ -586,6 +590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1_Page1_Section2
       objectReference: {fileID: 0}
+    - target: {fileID: 4679305498676091053, guid: 945112108bf9cd3478c466a2a385e392, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4679305498676091054, guid: 945112108bf9cd3478c466a2a385e392, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -629,6 +637,10 @@ PrefabInstance:
     - target: {fileID: 4679305498676091054, guid: 945112108bf9cd3478c466a2a385e392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977236432157544123, guid: 945112108bf9cd3478c466a2a385e392, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1191394
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 945112108bf9cd3478c466a2a385e392, type: 3}
@@ -1068,6 +1080,10 @@ PrefabInstance:
     - target: {fileID: 6507845591812884409, guid: 9ec08c42ca820f542a10191595624543, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070237070588293266, guid: 9ec08c42ca820f542a10191595624543, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1191351
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec08c42ca820f542a10191595624543, type: 3}
@@ -2017,6 +2033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 624707376}
     m_Modifications:
+    - target: {fileID: 2016132333, guid: 8d68968545254344981fd1633774a9ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1191351
+      objectReference: {fileID: 0}
     - target: {fileID: 4167842700878597268, guid: 8d68968545254344981fd1633774a9ac, type: 3}
       propertyPath: m_RootOrder
       value: 1

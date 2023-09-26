@@ -8,8 +8,8 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.NextPage();
             this.gameObject.SetActive(false);
+            GameManager.Instance.NextPage();
         }
     }
 }
