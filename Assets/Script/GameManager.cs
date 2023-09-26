@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     public string CurrentStageAndPage;
     [SerializeField] MapData Map;
     [SerializeField] PageManager _pageManager;
+
+    // Stage Management
+    [Header("Stages")]
+    [SerializeField] int stageNum = 1;
+    StageState[] stageStates;
+
     void Start()
     {
-        
+        // Init Stage States
+        stageStates = new StageState[stageNum];
+        Array.Fill(stageStates, StageState.NotClear);
     }
 
     void Update()
@@ -45,4 +55,22 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
+
+    // Stage Management Methods
+    public StageState GetStageStae(int index){
+        return stageStates[index];
+    }
+
+    // Scene Change Method
+    public void SceneChange(string sceneName){
+        SceneManager.LoadScene(sceneName);
+    }
+}
+
+public enum StageState
+{
+    NotClear,
+    Clear,
+    StarClear,
+    None
 }
