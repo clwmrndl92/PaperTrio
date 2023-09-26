@@ -9,6 +9,11 @@ public class Button : MonoBehaviour
     }
     public void GoToStage(int stageNum){
         GameManager.Instance.CurrentPage = 0;
+        if (stageNum >= 2)
+        {
+            Debug.Log("FinishGGGGame");
+            return;
+        }
         GameManager.Instance.CurrentStage = stageNum;
         GameManager.Instance.SceneChange("Stage" + stageNum.ToString());
     }

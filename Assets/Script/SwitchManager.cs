@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,10 +61,14 @@ public class SwitchManager : MonoBehaviour
         {
             foreach(Wall wall in walls)
             {
+                if (wall == null)
+                    continue;
                 if (wall.transform.parent.gameObject.activeSelf)
                 {
                     wall.ReverseMove();
                 }
+              
+                
             }
         }
     }
