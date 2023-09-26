@@ -28,7 +28,7 @@ public class PageManager : MonoBehaviour
 
     [SerializeField] private int maxIndex;
 
-    [SerializeField] GameObject Stage1_Page2_Section1;
+    [SerializeField] GameObject ClearText;
 
     private void Start()
     {
@@ -399,6 +399,10 @@ public class PageManager : MonoBehaviour
                 dynamicObjects.Add(child.gameObject);
             }
         }
+    }
+
+    public void ClearStage(){
+        ClearText.SetActive(true);
     }
 
     private void Update()
