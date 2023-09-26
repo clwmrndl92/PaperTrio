@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public string CurrentStageAndPage;
+    [SerializeField] private GameObject player;
     [SerializeField] MapData Map;
     [SerializeField] PageManager _pageManager;
 
@@ -15,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] int stageNum = 1;
     StageState[] stageStates;
 
+    public GameObject GetPlayer() => player;
+    
     void Start()
     {
         // Init Stage States
