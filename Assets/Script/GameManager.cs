@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] PageManager _pageManager;
     private void Awake()
     {
-        // LoadCurrentStageAndPage();
+        //LoadCurrentStageAndPage();
         // Init Stage States
         stageStates = new StageState[stageNum];
         Array.Fill(stageStates, StageState.NotClear);
@@ -31,36 +31,36 @@ public class GameManager : Singleton<GameManager>
     {
         return stageStates[index];
     }
-    public void LoadCurrentStageAndPage()
-    {
-        int stageIndex = CurrentStage;
-        int pageIndex = CurrentPage;
+    //public void LoadCurrentStageAndPage()
+    //{
+    //    int stageIndex = CurrentStage;
+    //    int pageIndex = CurrentPage;
 
-        LoadPlayerSpawnPosition();
-        _pageManager.ResetPages();
-        _pageManager.UpdatePagesIndex(pageIndex);
-        for (int i = 0; i <= pageIndex; i++)
-        {
-            var PageSections = Map.Stages[stageIndex].Pages[i].Sections;
-            for (int j = 0; j < PageSections.Count; j++)
-            {
-                if (j == 0)
-                    _pageManager.leftPages.Add(PageSections[j]);
-                else if (j == 1)
-                    _pageManager.middlePages.Add(PageSections[j]);
-                else if (j == 2)
-                    _pageManager.rightPages.Add(PageSections[j]);
-                if (i != pageIndex)
-                {
-                    PageSections[j].SetActive(false);
-                }
-                else
-                {
-                    PageSections[j].SetActive(true);
-                }
-            }
-        }
-    }
+    //    LoadPlayerSpawnPosition();
+    //    _pageManager.ResetPages();
+    //    _pageManager.UpdatePagesIndex(pageIndex);
+    //    for (int i = 0; i <= pageIndex; i++)
+    //    {
+    //        var PageSections = Map.Stages[stageIndex].Pages[i].Sections;
+    //        for (int j = 0; j < PageSections.Count; j++)
+    //        {
+    //            if (j == 0)
+    //                _pageManager.leftPages.Add(PageSections[j]);
+    //            else if (j == 1)
+    //                _pageManager.middlePages.Add(PageSections[j]);
+    //            else if (j == 2)
+    //                _pageManager.rightPages.Add(PageSections[j]);
+    //            if (i != pageIndex)
+    //            {
+    //                PageSections[j].SetActive(false);
+    //            }
+    //            else
+    //            {
+    //                PageSections[j].SetActive(true);
+    //            }
+    //        }
+    //    }
+    //}
 
     public void LoadPlayerSpawnPosition()
     {
@@ -75,7 +75,8 @@ public class GameManager : Singleton<GameManager>
             CurrentPage = CurrentPage % 3;
             NextStage();
         }
-        LoadCurrentStageAndPage();
+        _pageManager.LoadPage();
+        //LoadCurrentStageAndPage();
     }
 
     public void NextStage()
@@ -102,8 +103,7 @@ public class GameManager : Singleton<GameManager>
     {
         player = GameObject.FindWithTag("Player");
         _pageManager = GameObject.Find("PageManager").GetComponent<PageManager>();
-        // player = GameObject.FindWithTag("Player");
-        // _pageManager = GameObject.Find("PageManager").GetComponent<PageManager>();
+        //LoadCurrentStageAndPage();
     }
 }
 public enum StageState

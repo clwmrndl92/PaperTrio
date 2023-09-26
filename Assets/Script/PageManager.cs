@@ -20,10 +20,48 @@ public class PageManager : MonoBehaviour
     private List<GameObject> between1Objects = new();
     private List<GameObject> between2Objects = new();
 
+    [SerializeField] private int maxIndex;
+
     private void Start()
     {
         GameManager.Instance.initScene();
+        maxIndex = GameManager.Instance.CurrentPage;
+        LoadPage();
     }
+
+    public void LoadPage()
+    {
+        maxIndex = GameManager.Instance.CurrentPage;
+        int pageIndex = maxIndex;
+
+        GameManager.Instance.LoadPlayerSpawnPosition();
+        UpdatePagesIndex(pageIndex);
+        for (int i = 0; i <= pageIndex; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (i != pageIndex)
+                {
+                    if (j == 0)
+                        leftPages[i].SetActive(false);
+                    else if (j == 1)
+                        middlePages[i].SetActive(false);
+                    else if (j == 2)
+                        rightPages[i].SetActive(false);
+                }
+                else
+                {
+                    if (j == 0)
+                        leftPages[i].SetActive(true);
+                    else if (j == 1)
+                        middlePages[i].SetActive(true);
+                    else if (j == 2)
+                        rightPages[i].SetActive(true);
+                }
+            }
+        }
+    }
+
     private void ChangePage()
     {
         Vector3 mouseScreenPos = Input.mousePosition;
@@ -134,7 +172,7 @@ public class PageManager : MonoBehaviour
     private void NextPage(List<GameObject> list, ref int index)
     {
         UpdateDynamicObjectParent();
-        if (index == list.Count-1)
+        if (index == maxIndex)
         {
             return;
         }
