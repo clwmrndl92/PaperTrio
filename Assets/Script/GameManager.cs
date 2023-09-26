@@ -1,28 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     public string CurrentStageAndPage;
-    [SerializeField] private GameObject player;
     [SerializeField] MapData Map;
     [SerializeField] PageManager _pageManager;
 
     // Stage Management
     [Header("Stages")]
-    [SerializeField] int stageNum = 1;
+    [SerializeField] int stageCount = 1;
+    GameObject[] stageButtons;
     StageState[] stageStates;
 
-    public GameObject GetPlayer() => player;
-    
+    private void Awake() {
+        // Init Stage States
+        stageStates = new StageState[stageCount];
+        Array.Fill(stageStates, StageState.NotClear);
+    }
     void Start()
     {
-        // Init Stage States
-        stageStates = new StageState[stageNum];
-        Array.Fill(stageStates, StageState.NotClear);
     }
 
     void Update()
@@ -59,8 +60,11 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void ClearStage(int stageNum){
+        stageStates[stageNum] = StageState.Clear;
+    }
     // Stage Management Methods
-    public StageState GetStageStae(int index){
+    public StageState GetStageState(int index){
         return stageStates[index];
     }
 
