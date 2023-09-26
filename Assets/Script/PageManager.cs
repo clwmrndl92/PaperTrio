@@ -284,12 +284,12 @@ public class PageManager : MonoBehaviour
     {
         foreach(GameObject go in objects)
         {
-            Color originColor = go.GetComponent<SpriteRenderer>().color;
+            /*Color originColor = go.GetComponent<SpriteRenderer>().color;
             go.GetComponent<SpriteRenderer>().DOColor(Color.red, 1f)
                 .OnComplete(() =>
                 {
                     go.GetComponent<SpriteRenderer>().DOColor(originColor, 1f);
-                });
+                });*/
         }
     }
 
