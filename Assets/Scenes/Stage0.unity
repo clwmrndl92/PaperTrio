@@ -396,6 +396,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1413082275}
     - target: {fileID: 3116963100209242128, guid: a74a420a67646584d865c313fbdd5fa9, type: 3}
+      propertyPath: stageNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116963100209242128, guid: a74a420a67646584d865c313fbdd5fa9, type: 3}
       propertyPath: _pageManager
       value: 
       objectReference: {fileID: 1025089796}
