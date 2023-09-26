@@ -17,14 +17,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public int CurrentPage = 0;
     [SerializeField] MapData Map;
     [SerializeField] PageManager _pageManager;
-    private void Start()
+    private void Awake()
     {
         //LoadCurrentStageAndPage();
         // Init Stage States
         stageStates = new StageState[stageNum];
         Array.Fill(stageStates, StageState.NotClear);
-        player = GameObject.FindWithTag("Player");
-        _pageManager = GameObject.Find("PageManager").GetComponent<PageManager>();
     }
     public GameObject GetPlayer() => player;
 
@@ -89,11 +87,16 @@ public class GameManager : Singleton<GameManager>
     public void ClearStage(int stageNum)
     {
         stageStates[stageNum] = StageState.Clear;
+        Invoke(nameof(SceneChangeTitle), 3f);
     }
     // Scene Change Method
     public void SceneChange(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    public void SceneChangeTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void initScene()
