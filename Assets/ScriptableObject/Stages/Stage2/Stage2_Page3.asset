@@ -15,4 +15,5 @@ MonoBehaviour:
   Sections:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   RespawnPosition: {x: -11, y: 0, z: 0}
