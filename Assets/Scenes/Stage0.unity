@@ -450,10 +450,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1_Page1_Section1
       objectReference: {fileID: 0}
-    - target: {fileID: 496029113897337471, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dab1f4bb1e0b340a022c30b2479389, type: 3}
 --- !u!4 &156090118 stripped
@@ -506,12 +502,12 @@ GameObject:
   - component: {fileID: 234905389}
   - component: {fileID: 234905388}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: BackGroundGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &234905388
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2490,12 +2486,12 @@ GameObject:
   - component: {fileID: 1469404296}
   - component: {fileID: 1469404295}
   m_Layer: 0
-  m_Name: Square
+  m_Name: BackGroundYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1469404295
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2951,12 +2947,12 @@ GameObject:
   - component: {fileID: 1875855211}
   - component: {fileID: 1875855210}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: BackGroundRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1875855210
 SpriteRenderer:
   m_ObjectHideFlags: 0
