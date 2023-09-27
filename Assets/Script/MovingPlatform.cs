@@ -5,7 +5,9 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float stopTime;
     private float currentSpeed;
+    bool isStopped = false;
 
     private void Start()
     {
@@ -16,7 +18,9 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            currentSpeed = -currentSpeed;
+            currentSpeed = 0;
+            // isStopped = true;
+            Invoke("ChangeSpeed", stopTime);
         }
 
         if (collision.gameObject.CompareTag("Player"))
@@ -40,6 +44,12 @@ public class MovingPlatform : MonoBehaviour
     private void Update()
     {
         Move();
+    }
+
+    void ChangeSpeed(){
+        speed *= -1;
+        currentSpeed = speed;
+        // isStopped = false;
     }
 
 }
