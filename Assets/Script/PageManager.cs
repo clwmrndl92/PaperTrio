@@ -29,7 +29,63 @@ public class PageManager : MonoBehaviour
     [SerializeField] private int maxIndex;
 
     [SerializeField] GameObject ClearText;
+    [SerializeField] GameObject starClearText;
 
+    [SerializeField] List<SpriteRenderer> backLayer1;
+    [SerializeField] List<SpriteRenderer> backLayer2;
+    [SerializeField] Color red;
+    [SerializeField] Color yellow;
+
+    private void SetColor()
+    {
+        if (leftIndex == 0)
+        {
+            backLayer1[0].color = Color.white;
+            backLayer2[0].color = Color.white;
+        }
+        if (leftIndex == 1)
+        {
+            backLayer1[0].color = yellow;
+            backLayer2[0].color = Color.white;
+        }
+        if (leftIndex == 2)
+        {
+            backLayer1[0].color = red;
+            backLayer2[0].color = yellow;
+        }
+
+        if (rightIndex == 0)
+        {
+            backLayer1[2].color = Color.white;
+            backLayer2[2].color = Color.white;
+            }
+        if (rightIndex == 1)
+        {
+            backLayer1[2].color = yellow;
+            backLayer2[2].color = Color.white;
+        }
+        if (rightIndex == 2)
+        {
+            backLayer1[2].color = red;
+            backLayer2[2].color = yellow;
+        }
+
+        if (middleIndex == 0)
+        {
+            backLayer1[1].color = Color.white;
+            backLayer2[1].color = Color.white;
+        }
+        if (middleIndex == 1)
+        {
+            backLayer1[1].color = yellow;
+            backLayer2[1].color = Color.white;
+        }
+        if (middleIndex == 2)
+        {
+            backLayer1[1].color = red;
+            backLayer2[1].color = yellow;
+        }
+    }
     private void Start()
     {
         GameManager.Instance.initScene();
@@ -73,6 +129,7 @@ public class PageManager : MonoBehaviour
                 }
             }
         }
+        SetColor();
     }
 
     private void ChangePage()
@@ -174,10 +231,11 @@ public class PageManager : MonoBehaviour
             return;
         }
 
+        //list[index].GetComponent<Animator>().SetTrigger("FlipPageUpTrigger");
         list[index].SetActive(false);
         index -= 1;
         list[index].SetActive(true);
-
+        SetColor();
 
     }
 
@@ -188,10 +246,11 @@ public class PageManager : MonoBehaviour
         {
             return;
         }
-
         list[index].SetActive(false);
         index += 1;
         list[index].SetActive(true);
+        //list[index].GetComponent<Animator>().SetTrigger("FlipPageDownTrigger");
+        SetColor();
     }
     
     private void UpdateDynamicObjectParent()
@@ -403,6 +462,11 @@ public class PageManager : MonoBehaviour
 
     public void ClearStage(){
         ClearText.SetActive(true);
+    }
+
+    public void StarClearStage()
+    {
+        starClearText.SetActive(true);
     }
 
     private void Update()
