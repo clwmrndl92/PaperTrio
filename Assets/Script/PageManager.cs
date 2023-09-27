@@ -29,6 +29,7 @@ public class PageManager : MonoBehaviour
     [SerializeField] private int maxIndex;
 
     [SerializeField] GameObject ClearText;
+    [SerializeField] GameObject starClearText;
 
     [SerializeField] List<SpriteRenderer> backLayer1;
     [SerializeField] List<SpriteRenderer> backLayer2;
@@ -461,6 +462,11 @@ public class PageManager : MonoBehaviour
 
     public void ClearStage(){
         ClearText.SetActive(true);
+    }
+
+    public void StarClearStage()
+    {
+        starClearText.SetActive(true);
     }
 
     private void Update()
