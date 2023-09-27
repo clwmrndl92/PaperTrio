@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,15 +13,24 @@ public class SwitchManager : MonoBehaviour
     [SerializeField] private List<Wall> wall2List = new();
     [SerializeField] private List<Wall> wall3List = new();
 
+    private bool isAllSwitchDisable;
+
     private void CheckSwitchList(List<Switch> switches, List<Wall> walls)
     {
+        isAllSwitchDisable = true;
         foreach(Switch s in switches)
         {
             if (s == null)
                 continue;
 
             if (!s.transform.parent.transform.parent.gameObject.activeSelf)
+            {
                 continue;
+            }
+            else
+            {
+                isAllSwitchDisable = false;
+            }
 
             if (!s.isSwitch)
             {
@@ -44,6 +54,21 @@ public class SwitchManager : MonoBehaviour
                 {
                     wall.Move();
                 }
+            }
+        }
+
+        if (isAllSwitchDisable)
+        {
+            foreach(Wall wall in walls)
+            {
+                if (wall == null)
+                    continue;
+                if (wall.transform.parent.gameObject.activeSelf)
+                {
+                    wall.ReverseMove();
+                }
+              
+                
             }
         }
     }

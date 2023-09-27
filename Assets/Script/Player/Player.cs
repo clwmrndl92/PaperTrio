@@ -64,7 +64,17 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Dead") || other.gameObject.CompareTag("Laser") )
         {
-            GameManager.Instance._pageManager.RestartPage();
+            Time.timeScale = 0f;
+            GetComponent<SpriteRenderer>().color = Color.black;
+            StartCoroutine(Reset());
         }
+    }
+
+    IEnumerator Reset(){
+        yield return new WaitForSecondsRealtime(0.5f);
+        Time.timeScale = 1f;
+        GetComponent<SpriteRenderer>().color = Color.white;
+        GameManager.Instance._pageManager.RestartPage();
+
     }
 }
