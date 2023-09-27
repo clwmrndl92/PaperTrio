@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage3_Page3
   m_EditorClassIdentifier: 
   Sections:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2050334497656337150, guid: 204e13e273674e042bcfd43c2e944fda, type: 3}
+  - {fileID: 6920181046626651307, guid: f44655bec4ef0d1409e78ab20b53ab3e, type: 3}
+  - {fileID: 2328533276008470576, guid: 2ae104f8e7c6f594eb8d2455d73c36f7, type: 3}
   RespawnPosition: {x: -11, y: 0, z: 0}

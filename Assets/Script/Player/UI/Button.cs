@@ -9,7 +9,7 @@ public class Button : MonoBehaviour
     }
     public void GoToStage(int stageNum){
         GameManager.Instance.CurrentPage = 0;
-        if (stageNum >= 2)
+        if (stageNum >= 3)
         {
             Debug.Log("FinishGGGGame");
             return;

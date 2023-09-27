@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager>
 
     public void NextPage()
     {
+        Debug.Log("NextPage");
         CurrentPage++;
         if (CurrentPage >= 3)
         {

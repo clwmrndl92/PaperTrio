@@ -18,9 +18,11 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            currentSpeed = 0;
-            // isStopped = true;
-            Invoke("ChangeSpeed", stopTime);
+            if(!isStopped){
+                isStopped = true;
+                currentSpeed = -currentSpeed;
+                StartCoroutine(ChangeSpeed());
+            }
         }
 
         if (collision.gameObject.CompareTag("Player"))
@@ -29,6 +31,15 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D other) {
+        if ( other.gameObject.CompareTag("Box")){
+            if(!isStopped)
+                other.transform.Translate(currentSpeed*Time.deltaTime, 0, 0);
+        }
+    }
+    private void OnEnable() {
+        isStopped = false;
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -38,7 +49,8 @@ public class MovingPlatform : MonoBehaviour
     }
     private void Move()
     {
-        transform.Translate(currentSpeed*Time.deltaTime, 0, 0);
+        if(!isStopped)
+            transform.Translate(currentSpeed*Time.deltaTime, 0, 0);
     }
 
     private void Update()
@@ -46,10 +58,9 @@ public class MovingPlatform : MonoBehaviour
         Move();
     }
 
-    void ChangeSpeed(){
-        speed *= -1;
-        currentSpeed = speed;
-        // isStopped = false;
+    IEnumerator ChangeSpeed(){
+        yield return new WaitForSeconds(stopTime);
+        isStopped = false;
     }
 
 }
