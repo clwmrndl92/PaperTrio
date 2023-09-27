@@ -29,6 +29,7 @@ public class PageManager : MonoBehaviour
     [SerializeField] private int maxIndex;
 
     [SerializeField] GameObject ClearText;
+    [SerializeField] GameObject starClearText;
 
     private void Start()
     {
@@ -403,6 +404,11 @@ public class PageManager : MonoBehaviour
 
     public void ClearStage(){
         ClearText.SetActive(true);
+    }
+
+    public void StarClearStage()
+    {
+        starClearText.SetActive(true);
     }
 
     private void Update()
