@@ -9,7 +9,7 @@ public class JumpState : BaseState
     //private int hashMoveAnimation;
 
 
-    public JumpState(PlayerController controller) : base(controller)
+    public JumpState(Player player) : base(player)
     {
         //hashMoveAnimation = Animator.StringToHash("Velocity");
     }
@@ -21,24 +21,16 @@ public class JumpState : BaseState
 
     public override void OnEnterState()
     {
-        Controller.rigidData.jumpHeight = Controller.rigidData.jumpHeightPerBlock * Controller.rigidData.runSpeedPerBlock;
-        Controller.rigidData.jumpUpAcc = -2 * Controller.rigidData.jumpHeight / (Controller.rigidData.jumpUpTime * Controller.rigidData.jumpUpTime) - Controller.rigidData.gravity.y;
-        Controller.rigidData.jumpStartVel = 2 * Controller.rigidData.jumpHeight / Controller.rigidData.jumpUpTime;
-        Controller.rigidData.jumpVelocity = Controller.rigidData.jumpStartVel * Vector2.up + Controller.input.directionX * Controller.rigidData.jumpMove * Vector2.right;
-
-        if (Controller.rigidData.jumpVelocity.y <= 0)
+        if (player.rigid.velocity.y <= 0)
         {  
-            Controller.rigidData.jumpVelocity = Vector2.zero;
+            player.rigid.velocity = Vector2.zero;
         }
 
-        if (!Controller.rigidData.isJumping)
+        if (!player.isJumping)
         {
-            Controller.rigidData.isJumping = true;
+            player.isJumping = true;
         }
-        else
-        {
-            Controller.rigidData.isAirJumping = true;
-        }
+        player.rigid.AddForce(player.jumpPower * Vector2.up, ForceMode2D.Impulse);
     }
 
     public override void OnUpdateState()
@@ -53,47 +45,38 @@ public class JumpState : BaseState
 
     public override void OnFixedUpdateState()
     {
-        Controller.rigidData.runDirection = Controller.input.directionX;
-        // RunUpdate();
-        Controller.rigidData.runVelocity = Controller.rigidData.airMoving 
-            * Controller.rigidData.blockSize 
-            * Controller.rigidData.runDirection 
-            * Controller.rigidData.airMoving 
-            * Vector2.right;
-
-        Controller.rigidData.jumpVelocity += Controller.rigidData.jumpUpAcc * Time.fixedDeltaTime * Vector2.up;
+        player.rigid.velocity = player.rigid.velocity.y * Vector2.up + player.input.directionX * player.runVeclocity * Vector2.right;
     }
     public override void OnExitState()
     {
-        Controller.rigidData.jumpVelocity = Vector2.zero;
+        player.rigid.velocity = Vector2.zero;
     }
 
     private bool CanAir()
     {
-        if (Controller.rigidData.jumpVelocity.y <= 0)
+        if (player.rigid.velocity.y <= 0)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Air);
+            player.stateMachine.ChangeState(StateName.Air);
             return true;
         }
         return false;
     }
-    private bool CanJump()
-    {
-        if ((Controller.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON
-            && !Controller.rigidData.isAirJumping)
-        {
-            Controller.player.stateMachine.ChangeState(StateName.Jump);
-            return true;
-        }
-        return false;
-    }
+    // private bool CanJump()
+    // {
+    //     if ((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
+    //     {
+    //         player.stateMachine.ChangeState(StateName.Jump);
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
 
     private bool CanStand()
     {
-        if (Controller.ground.GetOnGround() && Controller.rigidData.jumpVelocity.y <= 0f)
+        if (player.ground.GetOnGround() && player.rigid.velocity.y <= 0f)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Stand);
+            player.stateMachine.ChangeState(StateName.Stand);
             return true;
         }
         return false;

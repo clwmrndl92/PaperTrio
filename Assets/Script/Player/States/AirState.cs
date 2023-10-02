@@ -9,7 +9,7 @@ public class AirState : BaseState
     //private int hashMoveAnimation;
 
 
-    public AirState(PlayerController controller) : base(controller)
+    public AirState(Player player) : base(player)
     {
         //hashMoveAnimation = Animator.StringToHash("Velocity");
     }
@@ -26,9 +26,8 @@ public class AirState : BaseState
 
     public override void OnUpdateState()
     {
-        if(
-            CanJump() 
-            || CanRun()
+        if( 
+            CanRun()
             || CanStand()
             )
         {
@@ -39,36 +38,18 @@ public class AirState : BaseState
 
     public override void OnFixedUpdateState()
     {
-        Controller.rigidData.runDirection = Controller.input.directionX;
-        Controller.rigidData.runVelocity = Controller.rigidData.airMoving 
-            * Controller.rigidData.blockSize 
-            * Controller.rigidData.runDirection 
-            * Controller.rigidData.airMoving 
-            * Vector2.right;
+        player.gameObject.transform.Translate(player.input.directionX * player.airVeclocity * Time.fixedDeltaTime * Vector3.right);
     }
     public override void OnExitState()
     {
-        Controller.ChangeBodyColor(Color.white);
     }
-
-    private bool CanJump()
-    {
-        //if ((Controller.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON
-        //    && !Controller.rigidData.isAirJumping)
-        //{
-        //    Controller.player.stateMachine.ChangeState(StateName.Jump);
-        //    return true;
-        //}
-        return false;
-    }
-
 
     private bool CanRun()
     {
-        if (Controller.ground.GetOnGround() 
-            && Controller.input.directionX != 0)
+        if (player.ground.GetOnGround() 
+            && player.input.directionX != 0)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Run);
+            player.stateMachine.ChangeState(StateName.Run);
             return true;
         }
         return false;
@@ -76,10 +57,10 @@ public class AirState : BaseState
 
     private bool CanStand()
     {
-        if (Controller.ground.GetOnGround() 
-            && Controller.rigid.velocity.y <= 0f)
+        if (player.ground.GetOnGround() 
+            && player.rigid.velocity.y <= 0f)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Stand);
+            player.stateMachine.ChangeState(StateName.Stand);
             return true;
         }
         return false;
