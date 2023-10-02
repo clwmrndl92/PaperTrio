@@ -9,7 +9,7 @@ public class RunState : BaseState
     //private int hashMoveAnimation;
 
 
-    public RunState(PlayerController controller) : base(controller)
+    public RunState(Player player) : base(player)
     {
         //hashMoveAnimation = Animator.StringToHash("Velocity");
     }
@@ -21,9 +21,8 @@ public class RunState : BaseState
 
     public override void OnEnterState()
     {
-        Controller.rigidData.jumpVelocity = Vector2.zero;
-        Controller.rigidData.isJumping = false;
-        Controller.rigidData.isAirJumping = false;
+        player.rigid.velocity = Vector2.zero;
+        player.isJumping = false;
     }
 
     public override void OnUpdateState()
@@ -36,52 +35,10 @@ public class RunState : BaseState
         }
     }
 
+
     public override void OnFixedUpdateState()
     {
-        Controller.rigidData.runDirection = Controller.input.directionX;
-
-        if (Controller.rigidData.runAccelerationTime == 0)
-        {
-            Controller.rigidData.runVelocity = Controller.rigidData.runSpeed * Controller.rigidData.runDirection * Vector2.right;
-            Controller.rigidData.runAcc = 0f;
-        }
-        else
-        {
-            Controller.rigidData.runAcc = Controller.rigidData.runSpeed * Controller.rigidData.runDirection / Controller.rigidData.runAccelerationTime;
-        }
-
-        if (Controller.rigidData.runDecelerationTime == 0)
-        {
-            Controller.rigidData.runDeAcc = 0f;
-        }
-        else
-        {
-            Controller.rigidData.runDeAcc = Controller.rigidData.runSpeed * Controller.rigidData.runDirection / Controller.rigidData.runDecelerationTime * -1;
-        }
-
-        if (Controller.input.directionX != 0)
-        {
-            if (Controller.rigidData.runVelocity.x * Controller.rigidData.runDirection < Controller.rigidData.runSpeed)
-            {
-                Controller.rigidData.runVelocity += Controller.rigidData.runAcc * Time.fixedDeltaTime * Vector2.right;
-            }
-            else
-            {
-                Controller.rigidData.runVelocity = Controller.rigidData.runSpeed * Controller.rigidData.runDirection * Vector2.right;
-            }
-        }
-        else
-        {
-            if (Controller.rigidData.runDecelerationTime == 0)
-            {
-                Controller.rigidData.runVelocity = Vector2.zero;
-            }
-
-            if (Controller.rigidData.runVelocity.x * Controller.rigidData.runDirection > 0)
-            {
-                Controller.rigidData.runVelocity += Controller.rigidData.runDeAcc * Time.fixedDeltaTime * Vector2.right;
-            }
-        }
+        player.rigid.velocity = player.input.directionX * player.runVeclocity * Vector2.right;
     }
     public override void OnExitState()
     {
@@ -89,9 +46,9 @@ public class RunState : BaseState
 
     private bool CanJump()
     {
-        if ((Controller.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
+        if ((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Jump);
+            player.stateMachine.ChangeState(StateName.Jump);
             return true;
         }
         return false;
@@ -99,11 +56,10 @@ public class RunState : BaseState
 
     private bool CanStand()
     {
-        if (Controller.ground.GetOnGround()
-            && Controller.input.directionX == 0
-            && (Controller.rigidData.runVelocity.x * Controller.rigidData.runDirection <= 0))
+        if (player.ground.GetOnGround()
+            && player.input.directionX == 0)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Stand);
+            player.stateMachine.ChangeState(StateName.Stand);
             return true;
         }
         return false;
@@ -111,9 +67,9 @@ public class RunState : BaseState
 
     private bool CanAir()
     {
-        if (!Controller.ground.GetOnGround())
+        if (!player.ground.GetOnGround())
         {
-            Controller.player.stateMachine.ChangeState(StateName.Air);
+            player.stateMachine.ChangeState(StateName.Air);
             return true;
         }
         return false;

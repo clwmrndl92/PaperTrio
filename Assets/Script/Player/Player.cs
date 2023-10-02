@@ -2,33 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
+    [Header("States")]
+    public float runVeclocity;
+    public float airVeclocity;
+    public float jumpPower;
+
     public StateMachine stateMachine { get; private set; }
     public Animator animator { get; private set; }
     public CapsuleCollider capsuleCollider { get; private set; }
 
-    private PlayerController playerController {get; set;}
+    public PlayerGround ground {get; private set;}
+    public Rigidbody2D rigid {get; private set;}
+    [HideInInspector] public InputData input;
 
-    // Status
-    public void SetController(PlayerController _playerController){
-        playerController = _playerController;
-    }
+
+    [HideInInspector] public bool isJumping = false;
 
     void Awake()
     {
+        input = new InputData();
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        ground = GetComponent<PlayerGround>();
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
-        stateMachine = new StateMachine(StateName.Stand, new StandState(playerController));
+        stateMachine = new StateMachine(StateName.Stand, new StandState(this));
         InitStateMachine();
     }
 
     void Update()
     {
+        PlayerInputCustom.Instance.GetInput(out input);
         stateMachine?.UpdateState();
         stateMachine?.FixedUpdateState();
     }
@@ -45,13 +54,9 @@ public class Player : MonoBehaviour
 
     private void InitStateMachine()
     {
-        stateMachine.AddState(StateName.Run, new RunState(playerController));
-        stateMachine.AddState(StateName.Jump, new JumpState(playerController));
-        stateMachine.AddState(StateName.Air, new AirState(playerController));
-        //stateMachine.AddState(StateName.Dash, new DashState(playerController));
-        //stateMachine.AddState(StateName.Boost, new BoostState(playerController));
-        //stateMachine.AddState(StateName.Trampoline, new TrampolineState(playerController));
-        //stateMachine.AddState(StateName.Spring, new SpringState(playerController));
+        stateMachine.AddState(StateName.Run, new RunState(this));
+        stateMachine.AddState(StateName.Jump, new JumpState(this));
+        stateMachine.AddState(StateName.Air, new AirState(this));
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
