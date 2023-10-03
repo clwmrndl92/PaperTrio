@@ -61,8 +61,12 @@ public class MovingPlatform : MonoBehaviour
         {
             transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
 
-            if(boxTransform!=null)
+            if (boxTransform != null)
+            {
+                boxTransform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 boxTransform.Translate(currentSpeed * Time.deltaTime, 0, 0);
+            }
+               
         }
             
     }

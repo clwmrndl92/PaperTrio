@@ -40,6 +40,7 @@ public class PageManager : MonoBehaviour
     [SerializeField] private List<AutoFlip> middleCurlList;
     [SerializeField] private List<AutoFlip> rightCurlList;
     [SerializeField] private float curlWaitSeconds;
+    private bool isCurling;
     private void SetColor()
     {
         if (leftIndex == 0)
@@ -152,7 +153,10 @@ public class PageManager : MonoBehaviour
                 bool isNext=NextPage(leftPages, ref leftIndex);
                 if (isNext)
                 {
+                    isCurling = true;
+                   // DynamicObjectDisable(0);
                     StartCoroutine(NextPageActive(leftPages, leftIndex));
+                    
                 }
                 return;
             }
@@ -171,6 +175,8 @@ public class PageManager : MonoBehaviour
                 bool isNext = NextPage(middlePages, ref middleIndex);
                 if (isNext)
                 {
+                    isCurling = true;
+                    //DynamicObjectDisable(1);
                     StartCoroutine(NextPageActive(middlePages, middleIndex));
                 }
                 return;
@@ -189,6 +195,8 @@ public class PageManager : MonoBehaviour
                 bool isNext = NextPage(rightPages, ref rightIndex);
                 if (isNext)
                 {
+                    isCurling = true;
+                    //DynamicObjectDisable(2);
                     StartCoroutine(NextPageActive(rightPages, rightIndex));
                 }
                 return;
@@ -242,12 +250,6 @@ public class PageManager : MonoBehaviour
             }
         }
     }
-    IEnumerator Delay()
-    {
-        Debug.Log("coroutine");
-        yield return new WaitForSeconds(curlWaitSeconds);
-    }
-
     private void PrevPage(List<GameObject> list, ref int index)
     {
         UpdateDynamicObjectParent();
@@ -279,6 +281,34 @@ public class PageManager : MonoBehaviour
         list[index+1].FlipLeftPage();
     }
 
+    private void DynamicObjectDisable(int page)
+    {
+        foreach(GameObject go in dynamicObjects)
+        {
+            if (go == null)
+                return;
+            if (!go.transform.parent.gameObject.activeSelf)
+                return;
+
+            Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
+            if (viewportPos.x < 0.33f&&page==0)
+            {
+                go.SetActive(false);
+                continue;
+            }
+            if (viewportPos.x > 0.33f && viewportPos.x < 0.66f && page == 1)
+            {
+                go.SetActive(false);
+                continue;
+            }
+            if (viewportPos.x > 0.66f && page == 2)
+            {
+                go.SetActive(false);
+                continue;
+            }
+        }
+    }
+
     private bool NextPage(List<GameObject> list, ref int index)
     {
         Debug.Log("nextPage");
@@ -290,6 +320,7 @@ public class PageManager : MonoBehaviour
         }
 
         index += 1;
+
         return true;
 
         
@@ -299,6 +330,7 @@ public class PageManager : MonoBehaviour
     IEnumerator NextPageActive(List<GameObject> list, int index)
     {
         yield return new WaitForSeconds(curlWaitSeconds);
+        isCurling = false;
         list[index-1].SetActive(false);
         list[index].SetActive(true);
         SetColor();
@@ -309,6 +341,10 @@ public class PageManager : MonoBehaviour
         {
             if (go == null)
                 continue;
+
+            if (isCurling)
+                return;
+
             if (go.transform.parent.gameObject.activeSelf)
             {
                 Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
