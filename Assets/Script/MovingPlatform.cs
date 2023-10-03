@@ -8,7 +8,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float stopTime;
     private float currentSpeed;
     bool isStopped = false;
-
+    private Transform boxTransform;
     private void Start()
     {
         currentSpeed = speed;
@@ -16,8 +16,11 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        Debug.Log("Ãæµ¹");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")
+             &&!collision.gameObject.CompareTag("Box"))
         {
+            Debug.Log("º®");
             if(!isStopped){
                 isStopped = true;
                 currentSpeed = -currentSpeed;
@@ -29,16 +32,11 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.transform.parent = transform;
         }
-    }
 
-    private void OnCollisionStay2D(Collision2D other) {
-        if ( other.gameObject.CompareTag("Box")){
-            if(!isStopped)
-                other.transform.Translate(currentSpeed*Time.deltaTime, 0, 0);
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            boxTransform = collision.transform;
         }
-    }
-    private void OnEnable() {
-        isStopped = false;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -46,17 +44,37 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.transform.parent = null;
         }
-    }
-    private void Move()
-    {
-        if(!isStopped)
-            transform.Translate(currentSpeed*Time.deltaTime, 0, 0);
+
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            boxTransform = null;
+        }
     }
 
-    private void Update()
+    private void OnEnable() {
+        isStopped = false;
+    }
+    
+    private void Move()
+    {
+        if (!isStopped)
+        {
+            transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
+
+            if(boxTransform!=null)
+                boxTransform.Translate(currentSpeed * Time.deltaTime, 0, 0);
+        }
+            
+    }
+
+    private void FixedUpdate()
     {
         Move();
     }
+    /*private void Update()
+    {
+        Move();
+    }*/
 
     IEnumerator ChangeSpeed(){
         yield return new WaitForSeconds(stopTime);

@@ -36,6 +36,10 @@ public class PageManager : MonoBehaviour
     [SerializeField] Color red;
     [SerializeField] Color yellow;
 
+    [SerializeField] private List<AutoFlip> leftCurlList;
+    [SerializeField] private List<AutoFlip> middleCurlList;
+    [SerializeField] private List<AutoFlip> rightCurlList;
+    [SerializeField] private float curlWaitSeconds;
     private void SetColor()
     {
         if (leftIndex == 0)
@@ -91,6 +95,9 @@ public class PageManager : MonoBehaviour
         GameManager.Instance.initScene();
         maxIndex = GameManager.Instance.CurrentPage;
         LoadPage();
+        PrevPage(leftPages, ref leftIndex);
+        PrevPage(middlePages, ref middleIndex);
+       // PrevPage(leftPages, ref leftIndex);
     }
 
     public void LoadPage()
@@ -148,7 +155,14 @@ public class PageManager : MonoBehaviour
                     BetweenCautionEffect(between1Objects);
                     return;
                 }
-                NextPage(leftPages, ref leftIndex);
+
+                NextPageCurlingEffect(leftCurlList, ref leftIndex);
+
+                bool isNext=NextPage(leftPages, ref leftIndex);
+                if (isNext)
+                {
+                    StartCoroutine(NextPageActive(leftPages, leftIndex));
+                }
                 return;
             }
 
@@ -162,7 +176,12 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                NextPage(middlePages, ref middleIndex);
+                NextPageCurlingEffect(middleCurlList, ref middleIndex);
+                bool isNext = NextPage(middlePages, ref middleIndex);
+                if (isNext)
+                {
+                    StartCoroutine(NextPageActive(middlePages, middleIndex));
+                }
                 return;
             }
           
@@ -174,7 +193,13 @@ public class PageManager : MonoBehaviour
                     BetweenCautionEffect(between2Objects);
                     return;
                 }
-                NextPage(rightPages, ref rightIndex);
+
+                NextPageCurlingEffect(rightCurlList, ref rightIndex);
+                bool isNext = NextPage(rightPages, ref rightIndex);
+                if (isNext)
+                {
+                    StartCoroutine(NextPageActive(rightPages, rightIndex));
+                }
                 return;
             }
         }
@@ -190,6 +215,7 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
+                PrevPageCurlingEffect(leftCurlList, ref leftIndex);
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
@@ -203,6 +229,7 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
+                PrevPageCurlingEffect(middleCurlList, ref middleIndex);
                 PrevPage(middlePages, ref middleIndex);
                 return;
             }
@@ -217,10 +244,17 @@ public class PageManager : MonoBehaviour
                     BetweenCautionEffect(between2Objects);
                     return;
                 }
+
+                PrevPageCurlingEffect(rightCurlList, ref rightIndex);
                 PrevPage(rightPages, ref rightIndex);
                 return;
             }
         }
+    }
+    IEnumerator Delay()
+    {
+        Debug.Log("coroutine");
+        yield return new WaitForSeconds(curlWaitSeconds);
     }
 
     private void PrevPage(List<GameObject> list, ref int index)
@@ -239,20 +273,45 @@ public class PageManager : MonoBehaviour
 
     }
 
-    private void NextPage(List<GameObject> list, ref int index)
+    private void PrevPageCurlingEffect(List<AutoFlip> list, ref int index)
     {
+        
+        list[index].transform.parent.gameObject.SetActive(true);
+        list[index].FlipRightPage();
+    }
+
+    private void NextPageCurlingEffect(List<AutoFlip> list, ref int index)
+    {/*
+        if (index - 1 < 0)
+            return;*/
+        list[index+1].transform.parent.gameObject.SetActive(true);
+        list[index+1].FlipLeftPage();
+    }
+
+    private bool NextPage(List<GameObject> list, ref int index)
+    {
+        Debug.Log("nextPage");
         UpdateDynamicObjectParent();
+
         if (index == maxIndex)
         {
-            return;
+            return false;
         }
-        list[index].SetActive(false);
+
         index += 1;
-        list[index].SetActive(true);
-        //list[index].GetComponent<Animator>().SetTrigger("FlipPageDownTrigger");
-        SetColor();
+        return true;
+
+        
     }
     
+
+    IEnumerator NextPageActive(List<GameObject> list, int index)
+    {
+        yield return new WaitForSeconds(curlWaitSeconds);
+        list[index-1].SetActive(false);
+        list[index].SetActive(true);
+        SetColor();
+    }
     private void UpdateDynamicObjectParent()
     {
         foreach(GameObject go in dynamicObjects)
