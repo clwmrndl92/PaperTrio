@@ -131,7 +131,7 @@ public class SwitchManager : MonoBehaviour
         switch2List.Clear();
         switch3List.Clear();
         wall1List.Clear();
-        wall1List.Clear();
-        wall1List.Clear();
+        wall2List.Clear();
+        wall3List.Clear();
     }
 }

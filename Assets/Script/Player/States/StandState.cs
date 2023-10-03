@@ -9,7 +9,7 @@ public class StandState : BaseState
     //private int hashMoveAnimation;
 
 
-    public StandState(PlayerController controller) : base(controller)
+    public StandState(Player player) : base(player)
     {
         //hashMoveAnimation = Animator.StringToHash("Velocity");
     }
@@ -20,13 +20,9 @@ public class StandState : BaseState
     }
 
     public override void OnEnterState()
-    {
-        Controller.rigidData.runVelocity = Vector2.zero;
-        Controller.rigidData.runDirection = 0;
-
-        Controller.rigidData.jumpVelocity = Vector2.zero;
-        Controller.rigidData.isJumping = false;
-        Controller.rigidData.isAirJumping = false;
+    {        
+        player.rigid.velocity = Vector2.zero;
+        player.isJumping = false;
     }
 
     public override void OnUpdateState()
@@ -49,9 +45,9 @@ public class StandState : BaseState
 
     private bool CanJump()
     {
-        if((Controller.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
+        if((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Jump);
+            player.stateMachine.ChangeState(StateName.Jump);
             return true;
         }
         return false;
@@ -59,9 +55,9 @@ public class StandState : BaseState
 
     private bool CanRun()
     {
-        if (Controller.input.directionX != 0)
+        if (player.input.directionX != 0)
         {
-            Controller.player.stateMachine.ChangeState(StateName.Run);
+            player.stateMachine.ChangeState(StateName.Run);
             return true;
         }
         return false;
@@ -69,9 +65,9 @@ public class StandState : BaseState
 
     private bool CanAir()
     {
-        if (!Controller.ground.GetOnGround())
+        if (!player.ground.GetOnGround())
         {
-            Controller.player.stateMachine.ChangeState(StateName.Air);
+            player.stateMachine.ChangeState(StateName.Air);
             return true;
         }
         return false;

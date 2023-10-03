@@ -114,26 +114,17 @@ public class PageManager : MonoBehaviour
 
         for (int i = 0; i <= pageIndex; i++)
         {
-            for (int j = 0; j < 3; j++)
+            if (i != pageIndex)
             {
-                if (i != pageIndex)
-                {
-                    if (j == 0)
-                        leftPages[i].SetActive(false);
-                    else if (j == 1)
-                        middlePages[i].SetActive(false);
-                    else if (j == 2)
-                        rightPages[i].SetActive(false);
-                }
-                else
-                {
-                    if (j == 0)
-                        leftPages[i].SetActive(true);
-                    else if (j == 1)
-                        middlePages[i].SetActive(true);
-                    else if (j == 2)
-                        rightPages[i].SetActive(true);
-                }
+                leftPages[i].SetActive(false);
+                middlePages[i].SetActive(false);
+                rightPages[i].SetActive(false);
+            }
+            else
+            {
+                leftPages[i].SetActive(true);
+                middlePages[i].SetActive(true);
+                rightPages[i].SetActive(true);
             }
         }
         SetColor();

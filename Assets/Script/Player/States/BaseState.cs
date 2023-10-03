@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class BaseState
 {
-    protected PlayerController Controller { get; private set; }
-    public BaseState(PlayerController controller)
+    protected Player player { get; private set; }
+    public BaseState(Player player)
     {
-        this.Controller = controller;
+        this.player = player;
     }
 
     public abstract void OnEnterState();
