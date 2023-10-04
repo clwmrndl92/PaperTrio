@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6015e74526676b74caadf83e8a652a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNum: 0
+  stageNum: 8
 --- !u!114 &851171450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6015e74526676b74caadf83e8a652a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNum: 0
+  stageNum: 7
 --- !u!114 &1200504083
 MonoBehaviour:
   m_ObjectHideFlags: 0
