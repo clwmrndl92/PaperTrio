@@ -36,14 +36,14 @@ public class Laser : MonoBehaviour
             Vector3 rayEnd = transform.position + startOffset;
             rayEnd.x += rayDistance;
 
-            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, rayDirection, rayDistance);
+            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position + startOffset, rayDirection, rayDistance);
             if (hit.Length != 0)
             {
                 foreach (var item in hit)
                 {
                     if (item.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                     {
-                        float colliderSizeX = item.point.x - transform.position.x;
+                        float colliderSizeX = item.point.x - transform.position.x + startOffset.x;
                         rayEnd.x = item.point.x;
 
                         lr.SetPosition(1, rayEnd);
@@ -65,14 +65,14 @@ public class Laser : MonoBehaviour
         {
             Vector3 rayEnd = transform.position + startOffset;
 
-            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, rayDirection, rayDistance);
+            RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position + startOffset, rayDirection, rayDistance);
             if (hit.Length != 0)
             {
                 foreach (var item in hit)
                 {
                     if (item.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
                     {
-                        float colliderSizeY = item.point.y - transform.position.y;
+                        float colliderSizeY = item.point.y - transform.position.y + startOffset.y;
                         rayEnd.y = item.point.y;
 
                         lr.SetPosition(1, rayEnd);

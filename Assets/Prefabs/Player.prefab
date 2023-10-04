@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d9ad9b7e083ef439dc74638fd8e886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runVeclocity: 10
-  airVeclocity: 1.5
+  runVeclocity: 8
+  airVeclocity: 1
   jumpPower: 20
   isJumping: 0
 --- !u!114 &3763568041770266013
