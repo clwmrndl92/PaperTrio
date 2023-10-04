@@ -937,7 +937,7 @@ MonoBehaviour:
   - {fileID: 1701922627}
   - {fileID: 1701922626}
   - {fileID: 1701922625}
-  curlWaitSeconds: 0.35
+  curlWaitSeconds: 0.25
 --- !u!4 &1025089797
 Transform:
   m_ObjectHideFlags: 0
@@ -2151,22 +2151,6 @@ PrefabInstance:
     - target: {fileID: 6310899905497840598, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
       propertyPath: m_Name
       value: PaperEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6310899906384007515, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6310899906506765660, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c28faf537a1b83a4e8b094ae32aa1917, type: 3}
-    - target: {fileID: 6310899906506765660, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6310899906863860317, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}

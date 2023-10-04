@@ -148,10 +148,10 @@ public class PageManager : MonoBehaviour
                 }
 
 
+                NextPageCurlingEffect(leftCurlList, ref leftIndex);
                 bool isNext=NextPage(leftPages, ref leftIndex);
                 if (isNext)
                 {
-                    NextPageCurlingEffect(leftCurlList, ref leftIndex);
                     isCurling = true;
                    // DynamicObjectDisable(0);
                     StartCoroutine(NextPageActive(leftPages, leftIndex));
@@ -170,10 +170,10 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
+                NextPageCurlingEffect(middleCurlList, ref middleIndex);
                 bool isNext = NextPage(middlePages, ref middleIndex);
                 if (isNext)
                 {
-                    NextPageCurlingEffect(middleCurlList, ref middleIndex);
                     isCurling = true;
                     //DynamicObjectDisable(1);
                     StartCoroutine(NextPageActive(middlePages, middleIndex));
@@ -190,10 +190,10 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
+                NextPageCurlingEffect(rightCurlList, ref rightIndex);
                 bool isNext = NextPage(rightPages, ref rightIndex);
                 if (isNext)
                 {
-                    NextPageCurlingEffect(rightCurlList, ref rightIndex);
                     isCurling = true;
                     //DynamicObjectDisable(2);
                     StartCoroutine(NextPageActive(rightPages, rightIndex));
@@ -213,8 +213,7 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                if(leftIndex != 0)
-                    PrevPageCurlingEffect(leftCurlList, ref leftIndex);
+                PrevPageCurlingEffect(leftCurlList, ref leftIndex);
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
@@ -228,8 +227,7 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                if(middleIndex != 0)
-                    PrevPageCurlingEffect(middleCurlList, ref middleIndex);
+                PrevPageCurlingEffect(middleCurlList, ref middleIndex);
                 PrevPage(middlePages, ref middleIndex);
                 return;
             }
@@ -245,8 +243,7 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                if(rightIndex != 0)
-                    PrevPageCurlingEffect(rightCurlList, ref rightIndex);
+                PrevPageCurlingEffect(rightCurlList, ref rightIndex);
                 PrevPage(rightPages, ref rightIndex);
                 return;
             }
@@ -271,14 +268,18 @@ public class PageManager : MonoBehaviour
     private void PrevPageCurlingEffect(List<AutoFlip> list, ref int index)
     {
         
-        list[index].transform.parent.gameObject.SetActive(true);
-        list[index].FlipRightPage();
+        Debug.Log("Prev Curl "  + index);
+        if(index != 0 ){
+            list[index].transform.parent.gameObject.SetActive(true);
+            list[index].FlipRightPage();
+        }
     }
 
     private void NextPageCurlingEffect(List<AutoFlip> list, ref int index)
     {/*
         if (index - 1 < 0)
             return;*/
+        Debug.Log("Next Curl " + index);
         list[index+1].transform.parent.gameObject.SetActive(true);
         list[index+1].FlipLeftPage();
     }
