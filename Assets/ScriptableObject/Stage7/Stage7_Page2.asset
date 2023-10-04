@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1bbaa95c562f2846a7db4fee3610dfa, type: 3}
-  m_Name: Stage5_Page3
+  m_Name: Stage7_Page2
   m_EditorClassIdentifier: 
   Sections:
-  - {fileID: 7994317992628410583, guid: 84f0bbe26cd3d704fa2d25eece4eec9d, type: 3}
-  - {fileID: 3612960438698537253, guid: 4fa0d30b7f7af01449226b2d450f6e20, type: 3}
-  - {fileID: 2296540245966065395, guid: 15d769ae61cc4894ebfacb335ae2c9ee, type: 3}
-  RespawnPosition: {x: -11, y: -4, z: 0}
+  - {fileID: 8445203971516964707, guid: 3f177353e94625744bbf6440866a54a9, type: 3}
+  - {fileID: 835520984464681672, guid: 51733a11599cb854986762f4d4e65eec, type: 3}
+  - {fileID: 7451904862605060398, guid: b4b5599a9fb0d3f4cacdbfb9d8fb934d, type: 3}
+  RespawnPosition: {x: -11, y: 4, z: 0}
