@@ -9,25 +9,29 @@ public class Laser : MonoBehaviour
     [SerializeField] private EdgeCollider2D col;
     [SerializeField] private float rayDistance;
     [SerializeField] private Vector3 rayDirection;
+    [SerializeField] private Vector3 startOffset;
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
         col = GetComponent<EdgeCollider2D>();
-        lr.SetPosition(0, transform.position);
-        Vector3 rayEnd = transform.position;
+        Vector3 laserStartPos = transform.position;
+        laserStartPos += startOffset;
+        lr.SetPosition(0, laserStartPos);
+        Vector3 rayEnd = laserStartPos;
         rayEnd.x += rayDistance;
         lr.SetPosition(1, rayEnd);
 
         Vector2[] colliderPoints;
         colliderPoints = col.points;
-        colliderPoints[0].x =0;
+        colliderPoints[0].x =startOffset.x;
+        colliderPoints[0].y = startOffset.y;
         colliderPoints[1].x = rayEnd.x;
         col.points = colliderPoints;
     }
 
     private void hitRay()
     {
-        Vector3 rayEnd = transform.position;
+        Vector3 rayEnd = transform.position+startOffset;
         rayEnd.x += rayDistance;
         
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, rayDirection, rayDistance);
@@ -37,12 +41,13 @@ public class Laser : MonoBehaviour
             {
                 if(item.collider.gameObject.layer == LayerMask.NameToLayer("Ground")){
                     float colliderSizeX = item.point.x - transform.position.x;
-                    rayEnd = item.point;
+                    rayEnd.x = item.point.x;
 
                     lr.SetPosition(1, rayEnd);
                     Vector2[] colliderPoints;
                     colliderPoints = col.points;
                     colliderPoints[1].x = colliderSizeX;
+                    colliderPoints[1].y = colliderPoints[0].y;
                     col.points = colliderPoints;
                     return;
                 }

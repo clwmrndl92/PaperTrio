@@ -349,7 +349,7 @@ public class PageManager : MonoBehaviour
 
             if (go.transform.parent.gameObject.activeSelf)
             {
-                Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
+                Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.GetChild(0).position);
                 if(viewportPos.x < 0.33f)
                 {
                     go.transform.parent = leftPages[leftIndex].transform;
