@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bbaa95c562f2846a7db4fee3610dfa, type: 3}
+  m_Name: Stage6_Page2
+  m_EditorClassIdentifier: 
+  Sections:
+  - {fileID: 1861696658460933221, guid: 1f02218392f56a14da9e2072caacb3c0, type: 3}
+  - {fileID: 118777409472492372, guid: 7c8b285cdf5f7b34fb3b9cfa7b872e49, type: 3}
+  - {fileID: 427487885177354126, guid: 76c65260446b7ff43881a8ef711b5c47, type: 3}
+  RespawnPosition: {x: -10, y: -3, z: 0}
