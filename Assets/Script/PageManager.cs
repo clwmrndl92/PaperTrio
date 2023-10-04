@@ -557,7 +557,7 @@ public class PageManager : MonoBehaviour
     {
         foreach(Transform child in obj.transform)
         {
-            if (child.CompareTag("Box"))
+            if (child.CompareTag("Box") || child.CompareTag("MovingPlatform"))
             {
                 dynamicObjects.Add(child.gameObject);
             }

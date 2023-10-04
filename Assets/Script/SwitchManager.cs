@@ -87,7 +87,7 @@ public class SwitchManager : MonoBehaviour
 
     public void UpdateSwitchList(GameObject obj)
     {
-        var switches = obj.GetComponentsInChildren<Switch>();
+        var switches = obj.GetComponentsInChildren<Switch>(includeInactive: true);
         foreach(var s in switches)
         {
             if (s.gameObject.name == "Switch1")
@@ -107,7 +107,7 @@ public class SwitchManager : MonoBehaviour
 
     public void UpdateWallList(GameObject obj)
     {
-        var walls = obj.GetComponentsInChildren<Wall>();
+        var walls = obj.GetComponentsInChildren<Wall>(includeInactive: true);
         foreach (var w in walls)
         {
             if (w.gameObject.name == "Wall1")
