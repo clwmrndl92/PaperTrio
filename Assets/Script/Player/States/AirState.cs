@@ -67,8 +67,7 @@ public class AirState : BaseState
 
     private bool CanStand()
     {
-        if (player.ground.GetOnGround() 
-            && player.rigid.velocity.y <= 0f)
+        if (player.ground.GetOnGround() )
         {
             player.stateMachine.ChangeState(StateName.Stand);
             return true;

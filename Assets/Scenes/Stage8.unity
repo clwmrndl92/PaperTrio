@@ -3062,10 +3062,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage8_Page1_Section3
       objectReference: {fileID: 0}
-    - target: {fileID: 2255972596179506384, guid: e7e8ecf95acdc9a47958d87849b28f76, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2255972596179506385, guid: e7e8ecf95acdc9a47958d87849b28f76, type: 3}
       propertyPath: m_RootOrder
       value: 2

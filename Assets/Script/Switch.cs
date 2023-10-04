@@ -38,19 +38,19 @@ public class Switch : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        Debug.Log("disable");
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, 1.0f); 
+    // private void OnDisable()
+    // {
+    //     Debug.Log("disable");
+    //     Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, 1.0f); 
 
-        foreach (Collider2D collision in collisions)
-        {
-            if (collision.CompareTag("Box")) // �ٸ� Collider2D�� "Player" �±׸� ���� ���
-            {
-                isSwitch = true;
-                break;
-            }
-        }
-    }
+    //     foreach (Collider2D collision in collisions)
+    //     {
+    //         if (collision.CompareTag("Box")) // �ٸ� Collider2D�� "Player" �±׸� ���� ���
+    //         {
+    //             isSwitch = true;
+    //             break;
+    //         }
+    //     }
+    // }
 
 }
