@@ -46,7 +46,7 @@ public class RunState : BaseState
 
     private bool CanJump()
     {
-        if ((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON)
+        if((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON && !player.isJumping)
         {
             player.stateMachine.ChangeState(StateName.Jump);
             return true;
