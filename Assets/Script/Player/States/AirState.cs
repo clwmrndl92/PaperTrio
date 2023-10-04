@@ -39,7 +39,7 @@ public class AirState : BaseState
 
     public override void OnFixedUpdateState()
     {
-        player.gameObject.transform.Translate(player.input.directionX * player.airVeclocity * Time.fixedDeltaTime * Vector3.right);
+        player.rigid.velocity = player.rigid.velocity.y * Vector2.up + player.input.directionX * player.runVeclocity * Vector2.right;
     }
     public override void OnExitState()
     {
