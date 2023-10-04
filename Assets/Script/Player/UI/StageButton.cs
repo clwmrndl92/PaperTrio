@@ -12,7 +12,8 @@ public class StageButton : Button
             case StageState.NotClear:
                 break;
             case StageState.Clear:
-                GetComponent<Image>().color = Color.green;
+                transform.GetChild(0).gameObject.SetActive(true);
+                // GetComponent<Image>().color = Color.green;
                 break;
             default:
                 break;
