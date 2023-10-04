@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage1_Page3
   m_EditorClassIdentifier: 
   Sections:
-  - {fileID: 3714940014760342520, guid: 128f200ad7fdd214cb2ba89334953ae3, type: 3}
-  - {fileID: 8653933635002374001, guid: 3015b10e36db6f142a1fe55bd32cb75c, type: 3}
-  - {fileID: 2521348304135629646, guid: 0a9e7cfb50ad66747936def2031a9c9c, type: 3}
+  - {fileID: 7927895719781477200, guid: c4e1528bb7500c042ad345d8ca8203e8, type: 3}
+  - {fileID: 3966472483359502880, guid: ee6bbd14dd47d3e4ba4f42fb3787e1e6, type: 3}
+  - {fileID: 2309326824224949994, guid: f27eef8b8e13b3340b202cb52f6373a5, type: 3}
   RespawnPosition: {x: -11, y: -3, z: 0}
