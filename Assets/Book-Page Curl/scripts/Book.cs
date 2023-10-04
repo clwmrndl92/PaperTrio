@@ -200,7 +200,6 @@ public class Book : MonoBehaviour {
         Left.transform.SetParent(BookPanel.transform, true);
         Left.transform.localEulerAngles = Vector3.zero;
         RightNext.transform.SetParent(BookPanel.transform, true);
-        Debug.Log("followLocation " + followLocation + " " );
         c = Calc_C_Position(followLocation);
         Vector3 t1;
         float clipAngle = CalcClipAngle(c, ebr, out t1);
