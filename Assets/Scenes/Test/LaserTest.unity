@@ -1544,7 +1544,6 @@ MonoBehaviour:
   isBetween2: 0
   maxIndex: 0
   ClearText: {fileID: 1036241280}
-  starClearText: {fileID: 1282912024}
   backLayer1:
   - {fileID: 228986047}
   - {fileID: 53990026}
@@ -4421,7 +4420,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4262100031705842572, guid: 9d6eb77d440d3664b8327a2210774b6f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4262100031705842572, guid: 9d6eb77d440d3664b8327a2210774b6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4487,7 +4486,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5625970758455869566, guid: 5ae310cca3a7306449af182a58931ae5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5625970758455869566, guid: 5ae310cca3a7306449af182a58931ae5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4564,17 +4563,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 202863150581492177}
     m_Modifications:
+    - target: {fileID: 870933270836552902, guid: 55a18e9894c91d34c9f4df2cd8d715f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6646391479481873479, guid: 55a18e9894c91d34c9f4df2cd8d715f5, type: 3}
       propertyPath: m_Name
       value: Stage_Page1_Section1
       objectReference: {fileID: 0}
-    - target: {fileID: 6646391479481873479, guid: 55a18e9894c91d34c9f4df2cd8d715f5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6646391479481873480, guid: 55a18e9894c91d34c9f4df2cd8d715f5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6646391479481873480, guid: 55a18e9894c91d34c9f4df2cd8d715f5, type: 3}
       propertyPath: m_LocalPosition.x
