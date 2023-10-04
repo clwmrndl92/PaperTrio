@@ -140,132 +140,172 @@ public class PageManager : MonoBehaviour
         // Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
 
         // if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-        CheckBetweenSection();
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
 
-            // if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
-            if (CheckPlayerSection() != 1)
+            NextPageCurlingEffect(leftCurlList, ref leftIndex);
+            bool isNext = NextPage(leftPages, ref leftIndex);
+            if (!isNext)
+                return;
+            CheckBetweenSection();
+            if (CheckPlayerSection() == 1)
             {
-                if (isBetween1)
-                {
-                    BetweenCautionEffect(between1Objects);
-                    return;
-                }
-
-
-                NextPageCurlingEffect(leftCurlList, ref leftIndex);
-                bool isNext=NextPage(leftPages, ref leftIndex);
-                if (isNext)
-                {
-                    isCurling = true;
-                   // DynamicObjectDisable(0);
-                    StartCoroutine(NextPageActive(leftPages, leftIndex));
-                    
-                }
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+
+            if (isBetween1)
+            {
+                BetweenCautionEffect(between1Objects);
+                return;
+            }
+
+
+            
+
+            isCurling = true;
+            // DynamicObjectDisable(0);
+            StartCoroutine(NextPageActive(leftPages, leftIndex));
+            return;
+           
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            CheckBetweenSection();
-            // if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
-            if (CheckPlayerSection() != 2)
-            {
-                if (isBetween1 || isBetween2)
-                {
-                    BetweenCautionEffect(between1Objects);
-                    BetweenCautionEffect(between2Objects);
-                    return;
-                }
 
-                NextPageCurlingEffect(middleCurlList, ref middleIndex);
-                bool isNext = NextPage(middlePages, ref middleIndex);
-                if (isNext)
-                {
-                    isCurling = true;
-                    //DynamicObjectDisable(1);
-                    StartCoroutine(NextPageActive(middlePages, middleIndex));
-                }
+            NextPageCurlingEffect(middleCurlList, ref middleIndex);
+            bool isNext = NextPage(middlePages, ref middleIndex);
+            if (!isNext)
+                return;
+
+            CheckBetweenSection();
+
+            if (CheckPlayerSection() == 2)
+            {
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+            if (isBetween1 || isBetween2)
+            {
+                BetweenCautionEffect(between1Objects);
+                BetweenCautionEffect(between2Objects);
+                return;
+            }
+
+            
+
+            isCurling = true;
+            //DynamicObjectDisable(1);
+            StartCoroutine(NextPageActive(middlePages, middleIndex));
+            return;
+            
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            CheckBetweenSection();
-            // if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
-            if (CheckPlayerSection() != 3)
-            {
-                if (isBetween2)
-                {
-                    BetweenCautionEffect(between2Objects);
-                    return;
-                }
+            NextPageCurlingEffect(rightCurlList, ref rightIndex);
+            bool isNext = NextPage(rightPages, ref rightIndex);
+            if (!isNext)
+                return;
 
-                NextPageCurlingEffect(rightCurlList, ref rightIndex);
-                bool isNext = NextPage(rightPages, ref rightIndex);
-                if (isNext)
-                {
-                    isCurling = true;
-                    //DynamicObjectDisable(2);
-                    StartCoroutine(NextPageActive(rightPages, rightIndex));
-                }
+            CheckBetweenSection();
+
+            if (CheckPlayerSection() == 3)
+            {
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+
+            if (isBetween2)
+            {
+                BetweenCautionEffect(between2Objects);
+                return;
+            }
+
+            
+            isCurling = true;
+            //DynamicObjectDisable(2);
+            StartCoroutine(NextPageActive(rightPages, rightIndex));
+           
+            return;
+           
         }
 
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            CheckBetweenSection();
-            if (CheckPlayerSection() != 1)
-            {
-                if (isBetween1)
-                {
-                    BetweenCautionEffect(between1Objects);
-                    return;
-                }
 
-                PrevPageCurlingEffect(leftCurlList, ref leftIndex);
-                PrevPage(leftPages, ref leftIndex);
+            if (leftIndex == 0)
+                return;
+
+            CheckBetweenSection();
+
+            if (CheckPlayerSection() == 1)
+            {
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+
+            if (isBetween1)
+            {
+                BetweenCautionEffect(between1Objects);
+                return;
+            }
+
+            PrevPageCurlingEffect(leftCurlList, ref leftIndex);
+            PrevPage(leftPages, ref leftIndex);
+            return;
+
         }
 
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            CheckBetweenSection();
-            if ( CheckPlayerSection() != 2)
-            {
-                if (isBetween1 || isBetween2)
-                {
-                    BetweenCautionEffect(between1Objects);
-                    BetweenCautionEffect(between2Objects);
-                    return;
-                }
 
-                PrevPageCurlingEffect(middleCurlList, ref middleIndex);
-                PrevPage(middlePages, ref middleIndex);
+            if (middleIndex == 0)
+                return;
+
+            CheckBetweenSection();
+
+            if (CheckPlayerSection() == 2)
+            {
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+
+            if (isBetween1 || isBetween2)
+            {
+                BetweenCautionEffect(between1Objects);
+                BetweenCautionEffect(between2Objects);
+                return;
+            }
+
+            PrevPageCurlingEffect(middleCurlList, ref middleIndex);
+            PrevPage(middlePages, ref middleIndex);
+            return;
+
             
         }
 
         else if (Input.GetKeyDown(KeyCode.E))
         {
+
+            if (rightIndex == 0)
+                return;
             CheckBetweenSection();
-            if (CheckPlayerSection() != 3)
+
+            if (CheckPlayerSection() == 3)
             {
-
-                if (isBetween2)
-                {
-                    BetweenCautionEffect(between2Objects);
-                    return;
-                }
-
-                PrevPageCurlingEffect(rightCurlList, ref rightIndex);
-                PrevPage(rightPages, ref rightIndex);
+                GameManager.Instance.GetPlayer().GetComponent<CautionEffect>().cautionEffectPlay();
                 return;
             }
+            if (isBetween2)
+            {
+                BetweenCautionEffect(between2Objects);
+                return;
+            }
+
+            PrevPageCurlingEffect(rightCurlList, ref rightIndex);
+            PrevPage(rightPages, ref rightIndex);
+            return;
+
         }
     }
     private void PrevPage(List<GameObject> list, ref int index)
@@ -469,12 +509,7 @@ public class PageManager : MonoBehaviour
     {
         foreach(GameObject go in objects)
         {
-            /*Color originColor = go.GetComponent<SpriteRenderer>().color;
-            go.GetComponent<SpriteRenderer>().DOColor(Color.red, 1f)
-                .OnComplete(() =>
-                {
-                    go.GetComponent<SpriteRenderer>().DOColor(originColor, 1f);
-                });*/
+            go.GetComponent<CautionEffect>().cautionEffectPlay();
         }
     }
 

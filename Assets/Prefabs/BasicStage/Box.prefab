@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7389663708689319661}
   - component: {fileID: 693927623339694914}
   - component: {fileID: 5821573269008607754}
+  - component: {fileID: 3873761562279132755}
   m_Layer: 6
   m_Name: Box
   m_TagString: Box
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 99b7b673e683680439d49b1340564fe0, type: 3}
-  m_Color: {r: 0.5019608, g: 0.49803925, b: 0.91372555, a: 1}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,3 +165,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.021934748}
   m_EdgeRadius: 0
+--- !u!114 &3873761562279132755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755619801414776131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137881aee6278814495df2ce9d6a52ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
