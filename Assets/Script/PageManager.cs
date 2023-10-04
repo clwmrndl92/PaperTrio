@@ -445,7 +445,7 @@ public class PageManager : MonoBehaviour
         {
             if (go == null)
                 continue;
-            float objectWidth= go.GetComponentInChildren<Collider2D>().bounds.extents.x*2;
+            float objectWidth= go.GetComponentInChildren<BoxCollider2D>().bounds.extents.x*2;
             float objectWorldPosX = go.transform.position.x;
 
             Debug.Log("objectPosX" + objectWorldPosX);
