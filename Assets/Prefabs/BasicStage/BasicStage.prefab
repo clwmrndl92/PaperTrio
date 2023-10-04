@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 7378341345587613589}
   - component: {fileID: 4659895448660051453}
   m_Layer: 0
-  m_Name: Stage_Page1_Section3
+  m_Name: Stage_Page2_Section3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 8016786801231745998}
   - component: {fileID: 1429907113749886180}
   m_Layer: 0
-  m_Name: Stage_Page1_Section2
+  m_Name: Stage_Page3_Section2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2124,7 +2124,7 @@ GameObject:
   - component: {fileID: 9046317731183457217}
   - component: {fileID: 4862612364839758612}
   m_Layer: 0
-  m_Name: Stage_Page1_Section2
+  m_Name: Stage_Page2_Section2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2191,7 +2191,7 @@ GameObject:
   - component: {fileID: 1530901096236295867}
   - component: {fileID: 6950006434814558126}
   m_Layer: 0
-  m_Name: Stage_Page1_Section1
+  m_Name: Stage_Page3_Section1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2376,7 +2376,7 @@ GameObject:
   - component: {fileID: 4343166545855648716}
   - component: {fileID: 1522104761008425952}
   m_Layer: 0
-  m_Name: Stage_Page1_Section3
+  m_Name: Stage_Page3_Section3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2510,7 +2510,7 @@ GameObject:
   - component: {fileID: 3842353683277263289}
   - component: {fileID: 8458109463411673796}
   m_Layer: 0
-  m_Name: Stage_Page1_Section1
+  m_Name: Stage_Page2_Section1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
