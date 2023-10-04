@@ -39,6 +39,9 @@ public class PlayerInputCustom : MonoBehaviour
         playerInput.Player.Move.started += OnMove;
         playerInput.Player.Move.canceled += OnMove;
 
+        playerInput.Player.MoveVertical.started += OnMoveVertical;
+        playerInput.Player.MoveVertical.canceled += OnMoveVertical;
+
         playerInput.Player.Jump.started += OnButton;
         playerInput.Player.Jump.canceled += OnButton;
 

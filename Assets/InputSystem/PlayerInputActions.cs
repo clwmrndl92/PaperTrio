@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Page"",
+                    ""type"": ""Value"",
+                    ""id"": ""d8a4dfe1-b776-46df-8fd1-5ae6adec4f0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -401,6 +410,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ClickRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a1518b4-b109-401d-b86b-5d8e1c5985e6"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3912c418-7d7d-41ca-8eae-6145b8b4f329"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e72c2116-a977-4f9a-97c0-87c7aae1e347"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""138db0a3-eda7-4f5d-b21d-6c88bee54014"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8c27a9b-7d61-494f-87cb-3dbb5ab8fc72"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b612dd6-9d70-4d47-8b2a-6a91345a60c6"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Page"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -476,6 +551,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_ClickLeft = m_Player.FindAction("ClickLeft", throwIfNotFound: true);
         m_Player_ClickRight = m_Player.FindAction("ClickRight", throwIfNotFound: true);
+        m_Player_Page = m_Player.FindAction("Page", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -543,6 +619,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_ClickLeft;
     private readonly InputAction m_Player_ClickRight;
+    private readonly InputAction m_Player_Page;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -553,6 +630,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @ClickLeft => m_Wrapper.m_Player_ClickLeft;
         public InputAction @ClickRight => m_Wrapper.m_Player_ClickRight;
+        public InputAction @Page => m_Wrapper.m_Player_Page;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -580,6 +658,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClickRight.started += instance.OnClickRight;
             @ClickRight.performed += instance.OnClickRight;
             @ClickRight.canceled += instance.OnClickRight;
+            @Page.started += instance.OnPage;
+            @Page.performed += instance.OnPage;
+            @Page.canceled += instance.OnPage;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -602,6 +683,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @ClickRight.started -= instance.OnClickRight;
             @ClickRight.performed -= instance.OnClickRight;
             @ClickRight.canceled -= instance.OnClickRight;
+            @Page.started -= instance.OnPage;
+            @Page.performed -= instance.OnPage;
+            @Page.canceled -= instance.OnPage;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -672,5 +756,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnClickLeft(InputAction.CallbackContext context);
         void OnClickRight(InputAction.CallbackContext context);
+        void OnPage(InputAction.CallbackContext context);
     }
 }
