@@ -60,18 +60,27 @@ public class Player : Singleton<Player>
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Dead") || other.gameObject.CompareTag("Laser") )
+        if (other.gameObject.CompareTag("Dead") )
         {
             GameManager.Instance._pageManager.RestartPage();
+        }
+        else if (other.gameObject.CompareTag("Laser") ){
+            Time.timeScale = 0f;
+            GetComponent<SpriteRenderer>().color = Color.black;
+            StartCoroutine(Reset());
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Dead") || other.gameObject.CompareTag("Laser") )
+        if (other.gameObject.CompareTag("Dead") )
         {
+            GameManager.Instance._pageManager.RestartPage();
+        }
+        if (other.gameObject.CompareTag("Laser") ){
             Time.timeScale = 0f;
             GetComponent<SpriteRenderer>().color = Color.black;
             StartCoroutine(Reset());
+
         }
     }
 
