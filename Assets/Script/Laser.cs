@@ -91,7 +91,7 @@ public class Laser : MonoBehaviour
             col.points[1] = rayEnd;
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         hitRay();
     }
