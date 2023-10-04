@@ -40,6 +40,10 @@ public class PageManager : MonoBehaviour
     [SerializeField] private List<AutoFlip> rightCurlList;
     [SerializeField] private float curlWaitSeconds;
     private bool isCurling;
+
+    private float middlePaperStartX=-3.65f;
+    private float rightPaperStartX=4f;
+
     private void SetColor()
     {
         if (leftIndex == 0)
@@ -164,6 +168,7 @@ public class PageManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
+            CheckBetweenSection();
             // if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
             if (CheckPlayerSection() != 2)
             {
@@ -187,7 +192,7 @@ public class PageManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-
+            CheckBetweenSection();
             // if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
             if (CheckPlayerSection() != 3)
             {
@@ -228,6 +233,7 @@ public class PageManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.W))
         {
+            CheckBetweenSection();
             if ( CheckPlayerSection() != 2)
             {
                 if (isBetween1 || isBetween2)
@@ -246,6 +252,7 @@ public class PageManager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.E))
         {
+            CheckBetweenSection();
             if (CheckPlayerSection() != 3)
             {
 
@@ -308,18 +315,18 @@ public class PageManager : MonoBehaviour
             if (!go.transform.parent.gameObject.activeSelf)
                 return;
 
-            Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
-            if (viewportPos.x < 0.33f&&page==0)
+            float goX = go.transform.position.x;
+            if (goX < middlePaperStartX&&page==0)
             {
                 go.SetActive(false);
                 continue;
             }
-            if (viewportPos.x > 0.33f && viewportPos.x < 0.66f && page == 1)
+            if (goX > middlePaperStartX && goX <rightPaperStartX && page == 1)
             {
                 go.SetActive(false);
                 continue;
             }
-            if (viewportPos.x > 0.66f && page == 2)
+            if (goX > rightPaperStartX && page == 2)
             {
                 go.SetActive(false);
                 continue;
@@ -365,18 +372,18 @@ public class PageManager : MonoBehaviour
 
             if (go.transform.parent.gameObject.activeSelf)
             {
-                Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
-                if(viewportPos.x < 0.33f)
+                float goX = go.transform.position.x;
+                if (goX < middlePaperStartX)
                 {
                     go.transform.parent = leftPages[leftIndex].transform;
                     continue;
                 }
-                if(viewportPos.x > 0.33f&& viewportPos.x < 0.66f)
+                if(goX > middlePaperStartX && goX < rightPaperStartX)
                 {
                     go.transform.parent = middlePages[middleIndex].transform;
                     continue;
                 }
-                if (viewportPos.x > 0.66f)
+                if (goX > rightPaperStartX)
                 {
                     go.transform.parent = rightPages[rightIndex].transform;
                     continue;
@@ -412,17 +419,16 @@ public class PageManager : MonoBehaviour
         
     private int CheckPlayerSection()
     {
-        Vector3 playerPos = GameManager.Instance.GetPlayer().transform.position;
-        float playerViewportPosX = Camera.main.WorldToViewportPoint(playerPos).x;
-        if (playerViewportPosX <= 0.33f)
+        float playerPosX = GameManager.Instance.GetPlayer().transform.position.x;
+        if (playerPosX <= middlePaperStartX)
         {
             return 1;
         }
-        if (playerViewportPosX > 0.33f&& playerViewportPosX<=0.66f)
+        if (playerPosX > middlePaperStartX && playerPosX <= rightPaperStartX)
         {
             return 2;
         }
-        if (playerViewportPosX > 0.66f)
+        if (playerPosX > rightPaperStartX)
         {
             return 3;
         }
@@ -439,20 +445,19 @@ public class PageManager : MonoBehaviour
         {
             if (go == null)
                 continue;
-            float widthHalf= go.GetComponentInChildren<Collider2D>().bounds.extents.x;
-            float viewportWidthHalf= widthHalf / 16f;
-            Debug.Log(viewportWidthHalf);
+            float objectWidth= go.GetComponentInChildren<Collider2D>().bounds.extents.x*2;
+            float objectWorldPosX = go.transform.position.x;
 
-            float objectViewportPosX = Camera.main.WorldToViewportPoint(go.transform.position).x;
-            if(0.33f-viewportWidthHalf<objectViewportPosX
-                &&0.33f + viewportWidthHalf >objectViewportPosX)
+            Debug.Log("objectPosX" + objectWorldPosX);
+            if(objectWorldPosX+objectWidth>middlePaperStartX
+                && objectWorldPosX<middlePaperStartX)
             {
                 between1Objects.Add(go);
                 isBetween1 = true;
             }
 
-            if (0.66f - viewportWidthHalf < objectViewportPosX
-                && 0.66f + viewportWidthHalf > objectViewportPosX)
+            if (objectWorldPosX + objectWidth > rightPaperStartX
+                && objectWorldPosX < rightPaperStartX)
             {
                 between2Objects.Add(go);
                 isBetween2 = true;
