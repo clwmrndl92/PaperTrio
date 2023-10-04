@@ -136,9 +136,9 @@ public class PageManager : MonoBehaviour
         // Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
 
         // if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        CheckBetweenSection();
         if (Input.GetKeyDown(KeyCode.A))
         {
-            CheckBetweenSection();
 
             // if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
             if (CheckPlayerSection() != 1)
