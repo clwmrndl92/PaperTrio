@@ -14,9 +14,6 @@ public class StageButton : Button
             case StageState.Clear:
                 GetComponent<Image>().color = Color.green;
                 break;
-            case StageState.StarClear:
-                GetComponent<Image>().color = Color.yellow;
-                break;
             default:
                 break;
         }
