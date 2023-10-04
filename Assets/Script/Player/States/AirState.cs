@@ -27,7 +27,8 @@ public class AirState : BaseState
     public override void OnUpdateState()
     {
         if( 
-            CanRun()
+            CanJump()
+            || CanRun()
             || CanStand()
             )
         {
@@ -44,6 +45,15 @@ public class AirState : BaseState
     {
     }
 
+    private bool CanJump()
+    {
+        if((player.input.buttonsDown & InputData.JUMPBUTTON) == InputData.JUMPBUTTON && !player.isJumping)
+        {
+            player.stateMachine.ChangeState(StateName.Jump);
+            return true;
+        }
+        return false;
+    }
     private bool CanRun()
     {
         if (player.ground.GetOnGround() 

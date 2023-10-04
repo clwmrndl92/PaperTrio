@@ -147,11 +147,11 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                NextPageCurlingEffect(leftCurlList, ref leftIndex);
 
                 bool isNext=NextPage(leftPages, ref leftIndex);
                 if (isNext)
                 {
+                    NextPageCurlingEffect(leftCurlList, ref leftIndex);
                     isCurling = true;
                    // DynamicObjectDisable(0);
                     StartCoroutine(NextPageActive(leftPages, leftIndex));
@@ -170,10 +170,10 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                NextPageCurlingEffect(middleCurlList, ref middleIndex);
                 bool isNext = NextPage(middlePages, ref middleIndex);
                 if (isNext)
                 {
+                    NextPageCurlingEffect(middleCurlList, ref middleIndex);
                     isCurling = true;
                     //DynamicObjectDisable(1);
                     StartCoroutine(NextPageActive(middlePages, middleIndex));
@@ -190,10 +190,10 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                NextPageCurlingEffect(rightCurlList, ref rightIndex);
                 bool isNext = NextPage(rightPages, ref rightIndex);
                 if (isNext)
                 {
+                    NextPageCurlingEffect(rightCurlList, ref rightIndex);
                     isCurling = true;
                     //DynamicObjectDisable(2);
                     StartCoroutine(NextPageActive(rightPages, rightIndex));
@@ -213,7 +213,8 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                PrevPageCurlingEffect(leftCurlList, ref leftIndex);
+                if(leftIndex != 0)
+                    PrevPageCurlingEffect(leftCurlList, ref leftIndex);
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
@@ -227,7 +228,8 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                PrevPageCurlingEffect(middleCurlList, ref middleIndex);
+                if(middleIndex != 0)
+                    PrevPageCurlingEffect(middleCurlList, ref middleIndex);
                 PrevPage(middlePages, ref middleIndex);
                 return;
             }
@@ -243,7 +245,8 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                PrevPageCurlingEffect(rightCurlList, ref rightIndex);
+                if(rightIndex != 0)
+                    PrevPageCurlingEffect(rightCurlList, ref rightIndex);
                 PrevPage(rightPages, ref rightIndex);
                 return;
             }
