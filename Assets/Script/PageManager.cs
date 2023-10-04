@@ -132,14 +132,16 @@ public class PageManager : MonoBehaviour
 
     private void ChangePage()
     {
-        Vector3 mouseScreenPos = Input.mousePosition;
-        Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
+        // Vector3 mouseScreenPos = Input.mousePosition;
+        // Vector3 mouseViewportPos = Camera.main.ScreenToViewportPoint(mouseScreenPos);
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        // if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetKeyDown(KeyCode.A))
         {
             CheckBetweenSection();
 
-            if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
+            // if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
+            if (CheckPlayerSection() != 1)
             {
                 if (isBetween1)
                 {
@@ -159,9 +161,11 @@ public class PageManager : MonoBehaviour
                 }
                 return;
             }
-
-
-            if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            // if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
+            if (CheckPlayerSection() != 2)
             {
                 if (isBetween1 || isBetween2)
                 {
@@ -180,9 +184,12 @@ public class PageManager : MonoBehaviour
                 }
                 return;
             }
-          
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
 
-            if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
+            // if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
+            if (CheckPlayerSection() != 3)
             {
                 if (isBetween2)
                 {
@@ -202,10 +209,10 @@ public class PageManager : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
             CheckBetweenSection();
-            if (mouseViewportPos.x < 0.33f && CheckPlayerSection() != 1)
+            if (CheckPlayerSection() != 1)
             {
                 if (isBetween1)
                 {
@@ -217,8 +224,11 @@ public class PageManager : MonoBehaviour
                 PrevPage(leftPages, ref leftIndex);
                 return;
             }
+        }
 
-            if (mouseViewportPos.x < 0.66f && mouseViewportPos.x > 0.33f && CheckPlayerSection() != 2)
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            if ( CheckPlayerSection() != 2)
             {
                 if (isBetween1 || isBetween2)
                 {
@@ -232,9 +242,11 @@ public class PageManager : MonoBehaviour
                 return;
             }
             
-            
+        }
 
-            if (mouseViewportPos.x > 0.66f && CheckPlayerSection() != 3)
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (CheckPlayerSection() != 3)
             {
 
                 if (isBetween2)
@@ -280,8 +292,11 @@ public class PageManager : MonoBehaviour
         if (index - 1 < 0)
             return;*/
         Debug.Log("Next Curl " + index);
-        list[index+1].transform.parent.gameObject.SetActive(true);
-        list[index+1].FlipLeftPage();
+        if(index + 1 < list.Count){
+            list[index+1].transform.parent.gameObject.SetActive(true);
+            list[index+1].FlipLeftPage();
+
+        }
     }
 
     private void DynamicObjectDisable(int page)

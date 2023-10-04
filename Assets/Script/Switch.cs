@@ -13,7 +13,7 @@ public class Switch : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Laser") && isSwitch == false)
+        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("MovingPlatform") || collision.CompareTag("Laser") && isSwitch == false)
         {
             isSwitch = true;
             _spriteRenderer.color = Color.red;
@@ -22,7 +22,7 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player")|| collision.CompareTag("Box")|| collision.CompareTag("Laser"))
+        if(collision.CompareTag("Player")|| collision.CompareTag("Box") || collision.CompareTag("MovingPlatform") || collision.CompareTag("Laser"))
         {
             isSwitch = true;
             _spriteRenderer.color = Color.red;
@@ -31,7 +31,7 @@ public class Switch : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("Laser"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Box") || collision.CompareTag("MovingPlatform")  || collision.CompareTag("Laser"))
         {
             isSwitch = false;
             _spriteRenderer.color = _color;
