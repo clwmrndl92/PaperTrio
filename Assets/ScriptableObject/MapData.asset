@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MapData
   m_EditorClassIdentifier: 
   Stages:
-  - {fileID: 11400000, guid: 371ce7312454ac04f9e29310d603b8e0, type: 2}
-  - {fileID: 11400000, guid: c75749d3ade3b6a4d8f4c9a03f087e98, type: 2}
-  - {fileID: 11400000, guid: 180b21f7bcdff0141be7958cff0a072f, type: 2}
+  - {fileID: 11400000, guid: f85488859ca99044faf8e6ef41aaa4df, type: 2}
+  - {fileID: 11400000, guid: f85488859ca99044faf8e6ef41aaa4df, type: 2}
+  - {fileID: 11400000, guid: f85488859ca99044faf8e6ef41aaa4df, type: 2}
   - {fileID: 11400000, guid: 14e0a70b68f4c2e468d14d4b2e571dcb, type: 2}
