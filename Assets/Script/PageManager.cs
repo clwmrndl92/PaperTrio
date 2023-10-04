@@ -421,7 +421,7 @@ public class PageManager : MonoBehaviour
         {
             if (go == null)
                 continue;
-            float widthHalf= go.GetComponent<Collider2D>().bounds.extents.x;
+            float widthHalf= go.GetComponentInChildren<Collider2D>().bounds.extents.x;
             float viewportWidthHalf= widthHalf / 16f;
             Debug.Log(viewportWidthHalf);
 
