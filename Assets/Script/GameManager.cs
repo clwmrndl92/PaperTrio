@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     // Stage Management
     [Header("Stages")]
-    [SerializeField] int stageNum = 1;
+    [SerializeField] public int stageNum = 1;
     StageState[] stageStates;
     [SerializeField] private GameObject player;
 

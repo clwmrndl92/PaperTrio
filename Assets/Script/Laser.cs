@@ -49,7 +49,7 @@ public class Laser : MonoBehaviour
                         lr.SetPosition(1, rayEnd);
                         Vector2[] colliderPoints;
                         colliderPoints = col.points;
-                        colliderPoints[1].x = colliderSizeX;
+                        colliderPoints[1].x = colliderSizeX - 0.5f;
                         colliderPoints[1].y = colliderPoints[0].y;
                         col.points = colliderPoints;
                         return;
@@ -78,7 +78,7 @@ public class Laser : MonoBehaviour
                         lr.SetPosition(1, rayEnd);
                         Vector2[] colliderPoints;
                         colliderPoints = col.points;
-                        colliderPoints[1].y = colliderSizeY;
+                        colliderPoints[1].y = colliderSizeY - 0.5f;
                         colliderPoints[1].x = colliderPoints[0].x;
                         col.points = colliderPoints;
                         return;
