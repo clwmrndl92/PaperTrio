@@ -147,8 +147,8 @@ public class PageManager : MonoBehaviour
                     return;
                 }
 
-                NextPageCurlingEffect(leftCurlList, ref leftIndex);
 
+                NextPageCurlingEffect(leftCurlList, ref leftIndex);
                 bool isNext=NextPage(leftPages, ref leftIndex);
                 if (isNext)
                 {
@@ -268,14 +268,18 @@ public class PageManager : MonoBehaviour
     private void PrevPageCurlingEffect(List<AutoFlip> list, ref int index)
     {
         
-        list[index].transform.parent.gameObject.SetActive(true);
-        list[index].FlipRightPage();
+        Debug.Log("Prev Curl "  + index);
+        if(index != 0 ){
+            list[index].transform.parent.gameObject.SetActive(true);
+            list[index].FlipRightPage();
+        }
     }
 
     private void NextPageCurlingEffect(List<AutoFlip> list, ref int index)
     {/*
         if (index - 1 < 0)
             return;*/
+        Debug.Log("Next Curl " + index);
         list[index+1].transform.parent.gameObject.SetActive(true);
         list[index+1].FlipLeftPage();
     }
@@ -346,7 +350,7 @@ public class PageManager : MonoBehaviour
 
             if (go.transform.parent.gameObject.activeSelf)
             {
-                Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.GetChild(0).position);
+                Vector3 viewportPos = Camera.main.WorldToViewportPoint(go.transform.position);
                 if(viewportPos.x < 0.33f)
                 {
                     go.transform.parent = leftPages[leftIndex].transform;
