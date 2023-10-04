@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stage5_Page2
   m_EditorClassIdentifier: 
   Sections: []
-  RespawnPosition: {x: 10, y: 0, z: 0}
+  RespawnPosition: {x: -8, y: -2, z: 0}

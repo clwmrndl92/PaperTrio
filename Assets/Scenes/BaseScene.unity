@@ -930,7 +930,6 @@ MonoBehaviour:
   isBetween2: 0
   maxIndex: 0
   ClearText: {fileID: 1036241280}
-  starClearText: {fileID: 1282912024}
   backLayer1:
   - {fileID: 7230464160763396797}
   - {fileID: 7230464160763396796}
@@ -2192,7 +2191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6310899906863860317, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce830d0dd143b340aee7df2bee217b1, type: 3}
