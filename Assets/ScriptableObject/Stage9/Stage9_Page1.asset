@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1bbaa95c562f2846a7db4fee3610dfa, type: 3}
   m_Name: Stage9_Page1
   m_EditorClassIdentifier: 
-  Sections: []
-  RespawnPosition: {x: -2, y: 0, z: 0}
+  Sections:
+  - {fileID: 2968882249004982718, guid: 6a8ae3197621e78488425c4437169237, type: 3}
+  - {fileID: 4159821667362484593, guid: 151ef7e21a502bc4a9fb83c79c9e71f0, type: 3}
+  - {fileID: 6045452637006732878, guid: 00d833fb4f417f34d8dbf725f4dc3eac, type: 3}
+  RespawnPosition: {x: -9, y: -2, z: 0}
