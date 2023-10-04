@@ -17,7 +17,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public int CurrentPage = 0;
     [SerializeField] public MapData Map;
     [SerializeField] public PageManager _pageManager;
-    public bool isStar { get; set; }
     private void Awake()
     {
         // Init Stage States
@@ -45,11 +44,6 @@ public class GameManager : Singleton<GameManager>
         if (CurrentPage >= 3)
         {
             CurrentPage = CurrentPage % 3;
-            if (isStar)
-            {
-                StarClearStage(CurrentStage);
-                return;
-            }
             ClearStage(CurrentStage);
             return;
         }
@@ -69,12 +63,6 @@ public class GameManager : Singleton<GameManager>
         Invoke(nameof(SceneChangeTitle), 2f);
     }
 
-    public void StarClearStage(int stageNum)
-    {
-        _pageManager.StarClearStage();
-        stageStates[stageNum] = StageState.StarClear;
-        Invoke(nameof(SceneChangeTitle), 2f);
-    }
     // Scene Change Method
     public void SceneChange(string sceneName)
     {
@@ -95,6 +83,5 @@ public enum StageState
 {
     NotClear,
     Clear,
-    StarClear,
     None
 }
