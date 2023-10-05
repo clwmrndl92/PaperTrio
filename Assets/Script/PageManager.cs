@@ -144,10 +144,11 @@ public class PageManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
 
-            NextPageCurlingEffect(leftCurlList, ref leftIndex);
+            
             bool isNext = NextPage(leftPages, ref leftIndex);
             if (!isNext)
                 return;
+
             CheckBetweenSection();
             if (CheckPlayerSection() == 1)
             {
@@ -161,8 +162,8 @@ public class PageManager : MonoBehaviour
                 return;
             }
 
+            NextPageCurlingEffect(leftCurlList, ref leftIndex);
 
-            
 
             isCurling = true;
             // DynamicObjectDisable(0);
@@ -173,11 +174,10 @@ public class PageManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S))
         {
 
-            NextPageCurlingEffect(middleCurlList, ref middleIndex);
             bool isNext = NextPage(middlePages, ref middleIndex);
             if (!isNext)
                 return;
-
+           
             CheckBetweenSection();
 
             if (CheckPlayerSection() == 2)
@@ -191,8 +191,8 @@ public class PageManager : MonoBehaviour
                 BetweenCautionEffect(between2Objects);
                 return;
             }
+            NextPageCurlingEffect(middleCurlList, ref middleIndex);
 
-            
 
             isCurling = true;
             //DynamicObjectDisable(1);
@@ -202,11 +202,11 @@ public class PageManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            NextPageCurlingEffect(rightCurlList, ref rightIndex);
+            
             bool isNext = NextPage(rightPages, ref rightIndex);
             if (!isNext)
                 return;
-
+            
             CheckBetweenSection();
 
             if (CheckPlayerSection() == 3)
@@ -220,8 +220,8 @@ public class PageManager : MonoBehaviour
                 BetweenCautionEffect(between2Objects);
                 return;
             }
+            NextPageCurlingEffect(rightCurlList, ref rightIndex);
 
-            
             isCurling = true;
             //DynamicObjectDisable(2);
             StartCoroutine(NextPageActive(rightPages, rightIndex));
@@ -339,9 +339,9 @@ public class PageManager : MonoBehaviour
         if (index - 1 < 0)
             return;*/
         Debug.Log("Next Curl " + index);
-        if(index + 1 < list.Count){
-            list[index+1].transform.parent.gameObject.SetActive(true);
-            list[index+1].FlipLeftPage();
+        if(index < list.Count){
+            list[index].transform.parent.gameObject.SetActive(true);
+            list[index].FlipLeftPage();
 
         }
     }
