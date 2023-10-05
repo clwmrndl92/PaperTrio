@@ -3002,10 +3002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4_Page2_Section1
       objectReference: {fileID: 0}
-    - target: {fileID: 1772035082563985687, guid: 2a9f47247a4a8734592cbfb60ebecad0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9f47247a4a8734592cbfb60ebecad0, type: 3}
 --- !u!4 &527708550073963322 stripped
@@ -3039,10 +3035,6 @@ PrefabInstance:
     - target: {fileID: 4647904695023973761, guid: 457700fedc1f2b24b9144aaba66e2354, type: 3}
       propertyPath: m_Name
       value: Stage4_Page2_Section3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647904695023973761, guid: 457700fedc1f2b24b9144aaba66e2354, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6665136676169787326, guid: 457700fedc1f2b24b9144aaba66e2354, type: 3}
       propertyPath: m_RootOrder
@@ -3515,10 +3507,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4_Page2_Section2
       objectReference: {fileID: 0}
-    - target: {fileID: 2770911856489995893, guid: 90c99f847f4450d448837a102b24f63c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8825810302983654879, guid: 90c99f847f4450d448837a102b24f63c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3663,10 +3651,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4_Page1_Section3
       objectReference: {fileID: 0}
-    - target: {fileID: 3398141062819194912, guid: 00f22432b572b9c42aa7149148c175ff, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3398141062819194913, guid: 00f22432b572b9c42aa7149148c175ff, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3793,10 +3777,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4_Page3_Section3
       objectReference: {fileID: 0}
-    - target: {fileID: 2840026592450281110, guid: bc2a45bf2bb66d748ac2ad678fb88914, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3591361025942314889, guid: bc2a45bf2bb66d748ac2ad678fb88914, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3898,10 +3878,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4_Page3_Section1
       objectReference: {fileID: 0}
-    - target: {fileID: 3787007250900067055, guid: a15d62376ab961f4ba6ad33a6c236576, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a15d62376ab961f4ba6ad33a6c236576, type: 3}
 --- !u!4 &4563228605062558147 stripped
@@ -3936,10 +3912,6 @@ PrefabInstance:
     - target: {fileID: 8056423604546363244, guid: 79ffd81a0e5ea1642a0445ab51b3fda3, type: 3}
       propertyPath: m_Name
       value: Stage4_Page1_Section2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8056423604546363244, guid: 79ffd81a0e5ea1642a0445ab51b3fda3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8056423604546363247, guid: 79ffd81a0e5ea1642a0445ab51b3fda3, type: 3}
       propertyPath: m_RootOrder
@@ -4110,10 +4082,6 @@ PrefabInstance:
     - target: {fileID: 6288322684891770093, guid: 0537eff50c0bbf14b95c3799b12f5c75, type: 3}
       propertyPath: m_Name
       value: Stage4_Page3_Section2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288322684891770093, guid: 0537eff50c0bbf14b95c3799b12f5c75, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0537eff50c0bbf14b95c3799b12f5c75, type: 3}
@@ -4757,10 +4725,6 @@ PrefabInstance:
     - target: {fileID: 5635169250864580888, guid: a1ecb3f3280b11c448fa36b073599479, type: 3}
       propertyPath: m_Name
       value: Stage4_Page1_Section1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635169250864580888, guid: a1ecb3f3280b11c448fa36b073599479, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5635169250864580891, guid: a1ecb3f3280b11c448fa36b073599479, type: 3}
       propertyPath: m_RootOrder
