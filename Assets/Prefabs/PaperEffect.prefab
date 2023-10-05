@@ -1157,7 +1157,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899905472528398}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!114 &6310899905472528398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899905570151142}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!114 &6310899905570151142 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899905589909113}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!114 &6310899905589909113 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899905940980987}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!114 &6310899905940980987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899906306532567}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!224 &6310899906324872327 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -2229,7 +2229,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899906506758832}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!224 &6310899906527216352 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -2427,7 +2427,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899906576244390}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!114 &6310899906576244390 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -2668,7 +2668,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899906826221012}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!1001 &6310899907013293073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2872,7 +2872,7 @@ MonoBehaviour:
   DelayBeforeStarting: 0
   AutoStartFlip: 0
   ControledBook: {fileID: 6310899907007650493}
-  AnimationFramesCount: 40
+  AnimationFramesCount: 10
 --- !u!224 &6310899907033350893 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
